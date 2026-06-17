@@ -1,10 +1,34 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+
+const quickFacts = [
+  { label: "Role", value: "Full Stack" },
+  { label: "Backend", value: "APIs + Auth" },
+  { label: "Database", value: "SQL / NoSQL" },
+];
+
+const techColors = [
+  "border-cyan-500/20 bg-cyan-500/10 text-cyan-200",
+  "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200",
+  "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+  "border-indigo-500/20 bg-indigo-500/10 text-indigo-200",
+  "border-pink-500/20 bg-pink-500/10 text-pink-200",
+  "border-teal-500/20 bg-teal-500/10 text-teal-200",
+  "border-violet-500/20 bg-violet-500/10 text-violet-200",
+  "border-rose-500/20 bg-rose-500/10 text-rose-200",
+  "border-cyan-500/20 bg-cyan-500/10 text-cyan-200",
+  "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200",
+  "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+];
+
+const techStack = [
+  "React", "Next.js", "JavaScript", "TypeScript", "Node.js",
+  "Express", "Tailwind CSS", "MongoDB", "PostgreSQL", "REST API", "Authentication",
+];
 
 export default function About() {
   return (
-    <section className="py-20 bg-charcoal/90">
-      <div className="max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-        {/* Text block */}
+    <section id="about" className="py-20 bg-charcoal/90">
+      <div className="mx-auto max-w-5xl px-4 grid md:grid-cols-2 gap-12 items-start">
         <motion.div
           className="space-y-6"
           initial={{ opacity: 0, x: -30 }}
@@ -12,34 +36,113 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-bold text-neonBlue">About Me</h2>
+          <h2 className="text-4xl font-bold text-cyan-400">About Me</h2>
+          <p className="text-gray-300 leading-relaxed">
+            I enjoy solving real-world problems through clean code, scalable
+            architecture, and modern engineering practices. My goal is to become a
+            highly skilled Software Engineer capable of designing and building
+            impactful products from concept to deployment.
+          </p>
           <p className="text-gray-300 leading-relaxed">
             I specialize in building performant, accessible, and visually
-            striking web applications. Over 8+ years I have led
-            cross‑functional teams, mentored junior developers, and delivered
-            mission‑critical products for fintech, e‑commerce, and SaaS
-            startups. My toolkit includes React, TypeScript, Node.js,
-            GraphQL, and a strong eye for UI/UX.
+            striking web applications &mdash; working across backend APIs,
+            database-driven systems, authentication solutions, and scalable
+            software architectures.
           </p>
           <a
             href="#contact"
-            className="inline-block bg-emerald hover:bg-emerald/80 text-black font-medium py-2 px-5 rounded-lg transition"
+            className="inline-block bg-gradient-to-r from-cyan-300 to-fuchsia-400 hover:from-cyan-200 hover:to-fuchsia-300 text-black font-semibold py-2.5 px-6 rounded-lg transition shadow-lg shadow-cyan-500/20"
           >
             Get in Touch
           </a>
         </motion.div>
 
-        {/* Glassmorphic card – portrait or illustration */}
         <motion.div
-          className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8"
         >
-          {/* Placeholder – replace with a real photo or illustration */}
-          <div className="aspect-w-16 aspect-h-9 bg-gray-800 rounded-md flex items-center justify-center text-gray-500">
-            <span>Photo / Illustration</span>
+          <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
+          <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-fuchsia-500/20 blur-3xl" />
+
+          <div className="relative">
+            <div className="mb-6 flex items-center gap-4">
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-cyan-300 to-fuchsia-400 text-2xl font-black text-black shadow-lg shadow-cyan-500/20">
+                <img
+                  src="https://ui-avatars.com/api/?name=Hasan&background=5EEAD4&color=000&size=64&bold=true"
+                  alt="Hasan"
+                  className="h-full w-full rounded-2xl object-cover"
+                />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-200">
+                  About Me
+                </p>
+                <h3 className="text-2xl font-bold text-white">Hasan</h3>
+                <p className="text-sm text-gray-300">
+                  Software Engineer | Full Stack Developer
+                </p>
+              </div>
+            </div>
+
+            <p className="text-sm leading-7 text-gray-300">
+              I enjoy solving real-world problems through clean code, scalable
+              architecture, and modern engineering practices. My goal is to become a
+              highly skilled Software Engineer capable of designing and building
+              impactful products from concept to deployment.
+            </p>
+
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {quickFacts.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="rounded-2xl border border-white/10 bg-black/20 p-4"
+                >
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-gray-500">
+                    {fact.label}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-white">
+                    {fact.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
+                Tech Stack
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((tech, i) => (
+                  <span
+                    key={tech}
+                    className={`rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-xl ${techColors[i % techColors.length]}`}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex gap-1.5">
+                  <span className="h-3 w-3 rounded-full bg-red-400/80" />
+                  <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
+                  <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
+                </div>
+                <p className="text-xs text-gray-500">architecture.ts</p>
+              </div>
+              <pre className="overflow-x-auto text-xs leading-6 text-cyan-50">
+                <code>{`const hasan = {
+  role: "Full Stack Developer",
+  focus: ["React", "Node.js", "APIs"],
+  mission: "Build scalable products"
+};`}</code>
+              </pre>
+            </div>
           </div>
         </motion.div>
       </div>

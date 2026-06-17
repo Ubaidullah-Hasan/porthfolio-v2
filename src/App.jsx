@@ -1,7 +1,6 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import About from "./components/About";
-// import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -9,7 +8,6 @@ import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Contact from "./components/contact/Contact";
 import Hero from "./components/Hero";
-// import Hero from "./components/Hero/Hero";
 
 /**
  * Root component – stitches all sections together.

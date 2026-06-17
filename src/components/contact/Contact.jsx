@@ -1,9 +1,16 @@
+import { motion } from "framer-motion";
 import ContactIntro from "./ContactIntro";
 import ContactForm from "./ContactForm";
 
 export default function Contact() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#050816] py-24">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="relative isolate overflow-hidden bg-[#050816] py-24"
+    >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.20),transparent_35%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.20),transparent_35%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent)]" />
 
@@ -17,6 +24,6 @@ export default function Contact() {
         <ContactIntro />
         <ContactForm />
       </div>
-    </section>
+    </motion.section>
   );
 }

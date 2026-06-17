@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function FloatingField({
   id,
   name,
@@ -26,7 +28,13 @@ export default function FloatingField({
 
   if (component === "textarea") {
     return (
-      <div className="relative">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="relative"
+      >
         <textarea
           id={id}
           name={name}
@@ -43,12 +51,18 @@ export default function FloatingField({
         <label htmlFor={id} className={labelClasses}>
           {label}
         </label>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="relative">
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="relative"
+    >
       <input
         id={id}
         name={name}
@@ -65,6 +79,6 @@ export default function FloatingField({
       <label htmlFor={id} className={labelClasses}>
         {label}
       </label>
-    </div>
+    </motion.div>
   );
 }
