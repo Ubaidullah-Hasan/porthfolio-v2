@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* v4 এ ক্লাস-ভিত্তিক ডার্ক মোড চেনার একদম সঠিক নিয়ম */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* কাস্টম কালারস */
+  --color-charcoal: #0a0a0a;
+  --color-neon-blue: #0ff;
+  --color-electric-purple: #9b5de5;
+  --color-emerald: #10b981;
+
+  /* কাস্টম ফন্ট */
+  --font-sans: "Inter", "system-ui", sans-serif;
+
+  /* কাস্টম ব্যাকগ্রাউন্ড ইমেজ (মেশ গ্রাডিয়েন্ট) */
+  --background-image-mesh-gradient: radial-gradient(at 20% 20%, #0ff 0%, transparent 50%), radial-gradient(at 80% 80%, #9b5de5 0%, transparent 50%);
+}
+
+
+
+/* Global smooth‑scroll */
+html {
+  scroll-behavior: smooth;
+}
