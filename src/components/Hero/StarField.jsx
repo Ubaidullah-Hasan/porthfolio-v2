@@ -1,51 +1,52 @@
 import { motion } from 'framer-motion';
 
 export default function StarField() {
-  // ৬০টি তারার জন্য অ্যারে
-  const totalStars = 60;
-  const stars = Array.from({ length: totalStars });
+  const totalItems = 80; // মোট কণার সংখ্যা
+  const items = Array.from({ length: totalItems });
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-      {stars.map((_, index) => {
-        // র্যান্ডম পজিশন ও প্রপার্টিজ
-        const randomTop = Math.floor(Math.random() * 100);
+      {items.map((_, index) => {
         const randomLeft = Math.floor(Math.random() * 100);
-        const randomDuration = 3 + Math.random() * 4;
-        const randomDelay = Math.random() * 5;
+        const randomDelay = Math.random() * 10;
         
-        // কিছু তারকা বড় হবে (২px থেকে ৪px), কিছু ছোট থাকবে
-        const size = index % 3 === 0 ? '3px' : index % 5 === 0 ? '4px' : '2px';
+        // অর্ধেকের বেশি কণা হবে উপর থেকে নিচে পড়া তুষারপাত (Snowflakes)
+        const isSnowflake = index % 1.5 === 0;
         
-        // প্রতি ৩টি তারার মধ্যে ১টিকে বাম থেকে ডানে মুভ করানো হবে
-        const isMovingStar = index % 3 === 0;
+        // খুব ধীর গতির জন্য ডিউরেশন বাড়ানো হয়েছে (১২ থেকে ২৫ সেকেন্ড)
+        const randomDuration = 12 + Math.random() * 13;
+        
+        // তুষার এবং তারার সাইজ (১.৫px থেকে ৩.৫px)
+        const size = index % 4 === 0 ? '3.5px' : index % 3 === 0 ? '2.5px' : '1.5px';
 
         return (
           <motion.div
             key={index}
-            className="absolute rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+            className="absolute rounded-full bg-white opacity-0"
             style={{
-              top: `${randomTop}%`,
-              left: `${isMovingStar ? '-5%' : `${randomLeft}%`}`,
+              left: `${randomLeft}%`,
               width: size,
               height: size,
+              // তুষার হলে একদম উপর থেকে শুরু হবে, সাধারণ তারা হলে স্ক্রিনে ছড়ানো থাকবে
+              top: isSnowflake ? '-2%' : `${Math.floor(Math.random() * 100)}%`,
+              filter: 'drop-shadow(0 0 4px rgba(255,255,255,0.8))',
             }}
             animate={
-              isMovingStar
+              isSnowflake
                 ? {
-                    // বাম থেকে ডানে মুভিং অ্যানিমেশন
-                    left: ['-5%', '105%'],
-                    opacity: [0, 0.8, 0.8, 0],
+                    // তুষারপাত অ্যানিমেশন: উপর থেকে নিচে নামবে এবং হালকা ডানে-বামে দুলবে
+                    top: ['-2%', '105%'],
+                    x: [0, Math.random() * 40 - 20, 0],
+                    opacity: [0, 0.7, 0.7, 0],
                   }
                 : {
-                    // জায়গায় দাঁড়িয়ে মিটিমিটি জ্বলার অ্যানিমেশন
-                    opacity: [0.1, 1, 0.1],
-                    scale: [1, 1.3, 1],
+                    // ব্যাকগ্রাউন্ডের তারা: খুব ধীরে ধীরে মিটিমিটি জ্বলবে
+                    opacity: [0.1, 0.6, 0.1],
                   }
             }
             transition={{
               repeat: Infinity,
-              duration: isMovingStar ? 8 + Math.random() * 7 : randomDuration,
+              duration: randomDuration,
               delay: randomDelay,
               ease: "linear",
             }}
