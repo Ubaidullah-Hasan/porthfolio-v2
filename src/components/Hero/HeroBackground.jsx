@@ -22,19 +22,19 @@ export default function HeroBackground() {
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.22),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.18),transparent_30%),linear-gradient(180deg,#050816_0%,#020617_60%,#000_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.08),transparent_30%),linear-gradient(180deg,#050816_0%,#020617_60%,#000_100%)]" />
 
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(circle_at_center,black_35%,transparent_80%)]" />
 
       <div className="absolute inset-x-0 top-20 bottom-0 overflow-hidden">
         <AnimatedOrb
           delay={0}
-          className="left-[12%] top-[12%] h-72 w-72 bg-cyan-400/20"
+          className="left-[12%] top-[12%] h-72 w-72 bg-cyan-400/10"
         />
 
         <AnimatedOrb
           delay={1.4}
-          className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/20"
+          className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/[0.08]"
         />
 
         {stars.map((star) => (
@@ -74,7 +74,7 @@ function Star({ x, y, size, delay, duration }) {
         top: `${y}%`,
         fontSize: size,
       }}
-      className="absolute text-cyan-100 drop-shadow-[0_0_10px_rgba(34,211,238,0.9)]"
+      className="absolute text-cyan-100 drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]"
       animate={{
         opacity: [0.2, 1, 0.2],
         scale: [0.8, 1.4, 0.8],

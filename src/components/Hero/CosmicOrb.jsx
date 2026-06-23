@@ -5,7 +5,7 @@ export default function CosmicOrb() {
     <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
       {/* মেইন গ্লোয়িং কোর */}
       <motion.div
-        className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full opacity-20 bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 blur-[80px]"
+        className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full opacity-10 bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 blur-[80px]"
         animate={{
           scale: [1, 1.15, 0.95, 1],
           rotate: [0, 120, 240, 360],
