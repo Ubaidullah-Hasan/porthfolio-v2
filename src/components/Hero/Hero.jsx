@@ -25,13 +25,14 @@ export default function Hero() {
       </div>
 
       {/* ৪. ফিক্সড ও পারফেক্টলি ওয়ার্কিং স্ক্রোল ইন্ডিকেটর */}
-      <div 
-        onClick={handleScroll}
+        <button
+          type="button"
+          onClick={handleScroll}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer z-20 group"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-mono group-hover:text-yellow-400 transition-colors duration-300">
           Scroll Explore
-        </span>
+        </button>
         <div className="w-[24px] h-[40px] border-2 border-slate-600 group-hover:border-yellow-400 rounded-full p-1 transition-colors duration-300 flex justify-center">
           <motion.div
             className="w-1.5 h-1.5 bg-yellow-400 rounded-full"

@@ -11,6 +11,13 @@ const professionalSummary =
   "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
 
 export default function Hero() {
+  const handleScrollDown = () => {
+    const nextSection = document.getElementById('about');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -22,15 +29,16 @@ export default function Hero() {
         <HeroContent />
       </div>
 
-      <motion.a
-        href="#about"
+      <motion.button
+        type="button"
         aria-label="Scroll down"
+        onClick={handleScrollDown}
         className="absolute bottom-6 left-1/2 grid h-11 w-11 -translate-x-1/2 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-gray-300 backdrop-blur-xl"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
         <ArrowDownIcon className="h-6 w-6" />
-      </motion.a>
+      </motion.button>
     </section>
   );
 }

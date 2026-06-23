@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import StarField from "../Hero/StarField";
 import ContactIntro from "./ContactIntro";
 import ContactForm from "./ContactForm";
 
@@ -12,6 +13,7 @@ export default function Contact() {
       className="relative isolate overflow-hidden bg-[#050816] py-24"
     >
       <div className="pointer-events-none absolute inset-0">
+        <StarField />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.20),transparent_35%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.20),transparent_35%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent)]" />
 
         <div className="absolute -left-24 top-16 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl" />

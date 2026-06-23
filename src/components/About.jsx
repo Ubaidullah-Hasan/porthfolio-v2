@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import StarField from "./Hero/StarField";
 
 const quickFacts = [
   { label: "Role", value: "Full Stack" },
@@ -27,34 +28,29 @@ const techStack = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-charcoal/90">
-      <div className="mx-auto max-w-5xl px-4 grid md:grid-cols-2 gap-12 items-start">
+    <section id="about" className="relative py-20 bg-charcoal/90 overflow-hidden">
+      {/* section background animation */}
+      <StarField />
+
+      <div className="mx-auto max-w-5xl px-4 grid md:grid-cols-2 gap-12 items-stretch">
         <motion.div
-          className="space-y-6"
+          className="h-full flex flex-col justify-center gap-6 relative z-10"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-bold text-cyan-400">About Me</h2>
-          <p className="text-gray-300 leading-relaxed">
-            I enjoy solving real-world problems through clean code, scalable
-            architecture, and modern engineering practices. My goal is to become a
-            highly skilled Software Engineer capable of designing and building
-            impactful products from concept to deployment.
-          </p>
-          <p className="text-gray-300 leading-relaxed">
-            I specialize in building performant, accessible, and visually
-            striking web applications &mdash; working across backend APIs,
-            database-driven systems, authentication solutions, and scalable
-            software architectures.
-          </p>
-          <a
-            href="#contact"
-            className="inline-block bg-gradient-to-r from-cyan-300 to-fuchsia-400 hover:from-cyan-200 hover:to-fuchsia-300 text-black font-semibold py-2.5 px-6 rounded-lg transition shadow-lg shadow-cyan-500/20"
-          >
-            Get in Touch
-          </a>
+          <div className="flex h-full items-center justify-center">
+            <div className="w-72 h-72 rounded-full bg-gradient-to-r from-cyan-300 via-fuchsia-400 to-emerald-300 p-[3px] sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+              <div className="h-full w-full overflow-hidden rounded-full bg-[#020617] p-2">
+              <img
+                src="https://ui-avatars.com/api/?name=Hasan&background=0f172a&color=38bdf8&size=512&bold=true"
+                alt="Hasan"
+                  className="h-full w-full rounded-full object-cover"
+              />
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
@@ -62,7 +58,8 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8"
+          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8 z-10"
+          style={{ alignSelf: 'stretch' }}
         >
           <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
           <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-fuchsia-500/20 blur-3xl" />

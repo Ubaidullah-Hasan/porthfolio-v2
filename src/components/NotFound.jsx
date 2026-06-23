@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import StarField from './Hero/StarField'
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import StarField from "./Hero/StarField";
 
 export default function NotFound() {
   return (
@@ -18,12 +18,14 @@ export default function NotFound() {
           <motion.h1
             className="text-8xl md:text-9xl font-extrabold tracking-tight mb-6"
             animate={{ scale: [1, 1.04, 1] }}
-            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
           >
             404
           </motion.h1>
 
-          <p className="text-lg md:text-xl text-slate-300 mb-6">Sorry — the page you requested could not be found.</p>
+          <p className="text-lg md:text-xl text-slate-300 mb-6">
+            Sorry — the page you requested could not be found.
+          </p>
 
           <div className="flex items-center justify-center gap-4">
             <Link
@@ -43,5 +45,5 @@ export default function NotFound() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,14 +1,14 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import About from "./components/About";
-import Navbar from "./components/Navbar";
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Footer from './components/Footer';
+import Background from "./components/Background";
 import Contact from "./components/contact/Contact";
+import Experience from "./components/Experience";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import Background from './components/Background'
+import Navbar from "./components/Navbar";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 
 /**
  * Root component – stitches all sections together.
@@ -41,10 +41,18 @@ export default function App() {
       <section id="about">
         <About />
       </section>
-      <section id="skills"><Skills /></section>
-      <section id="projects"><Projects /></section>
-      <section id="experience"><Experience /></section>
-      <section id="contact"><Contact /></section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="experience">
+        <Experience />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
 
       <Footer />
     </motion.div>
