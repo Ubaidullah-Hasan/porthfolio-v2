@@ -1,6 +1,6 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 
 export default function Navbar() {
@@ -27,7 +27,7 @@ export default function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/20"
-          : "bg-transparent"
+          : "bg-transparent border-transparent shadow-none backdrop-blur-0"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
@@ -36,7 +36,7 @@ export default function Navbar() {
           smooth
           duration={500}
           offset={-70}
-          className="cursor-pointer text-2xl font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent"
+          className="cursor-pointer text-2xl font-bold bg-linear-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent"
         >
           Hasan
         </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
                 className="relative cursor-pointer px-3 py-2 text-sm font-medium tracking-wider text-gray-400 transition-colors hover:text-white"
               >
                 {item.label}
-                <span className="absolute -bottom-0.5 left-1/2 h-px w-3/4 -translate-x-1/2 scale-x-0 bg-gradient-to-r from-cyan-300 to-fuchsia-400 transition-transform duration-300 group-hover:scale-x-100" />
+                <span className="absolute -bottom-0.5 left-1/2 h-px w-3/4 -translate-x-1/2 scale-x-0 bg-linear-to-r from-cyan-300 to-fuchsia-400 transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             </li>
           ))}
@@ -62,7 +62,7 @@ export default function Navbar() {
           <li className="ml-4">
             <a
               href="#contact"
-              className="inline-block rounded-full bg-gradient-to-r from-cyan-300 to-fuchsia-400 px-5 py-2 text-xs font-bold uppercase tracking-wider text-black shadow-lg shadow-cyan-500/20 transition hover:from-cyan-200 hover:to-fuchsia-300 hover:shadow-cyan-500/30"
+              className="inline-block rounded-full bg-linear-to-r from-cyan-300 to-fuchsia-400 px-5 py-2 text-xs font-bold uppercase tracking-wider text-black shadow-lg shadow-cyan-500/20 transition hover:from-cyan-200 hover:to-fuchsia-300 hover:shadow-cyan-500/30"
             >
               Hire Me
             </a>
@@ -110,7 +110,7 @@ export default function Navbar() {
             <li className="px-6 py-4">
               <a
                 href="#contact"
-                className="block rounded-full bg-gradient-to-r from-cyan-300 to-fuchsia-400 px-5 py-2.5 text-center text-xs font-bold uppercase tracking-wider text-black"
+                className="block rounded-full bg-linear-to-r from-cyan-300 to-fuchsia-400 px-5 py-2.5 text-center text-xs font-bold uppercase tracking-wider text-black"
                 onClick={() => setIsOpen(false)}
               >
                 Hire Me

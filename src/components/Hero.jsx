@@ -10,11 +10,19 @@ import cvPdf from "../assets/ubaidullah_hasan_CV.pdf";
 const professionalSummary =
   "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
 
+const pseudoRandom = (seed) => {
+  const value = Math.sin(seed * 9999) * 10000;
+  return value - Math.floor(value);
+};
+
 export default function Hero() {
   const handleScrollDown = () => {
     const nextSection = document.getElementById("about");
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
+      const offset = 80;
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
     }
   };
 
@@ -33,7 +41,7 @@ export default function Hero() {
         type="button"
         aria-label="Scroll down"
         onClick={handleScrollDown}
-        className="absolute bottom-6 left-1/2 grid h-11 w-11 -translate-x-1/2 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-gray-300 backdrop-blur-xl"
+        className="cursor-pointer absolute bottom-6 left-1/2 z-20 grid h-11 w-11 -translate-x-1/2 place-items-center rounded-full border border-white/10 bg-white/6 text-gray-300 backdrop-blur-xl"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
@@ -48,11 +56,11 @@ function HeroBackground() {
     () =>
       Array.from({ length: 20 }, (_, i) => ({
         id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 30,
-        size: 6 + Math.random() * 8,
-        delay: Math.random() * 2,
-        duration: 2.6 + Math.random() * 2.4,
+        x: pseudoRandom(i + 1) * 100,
+        y: pseudoRandom(i + 11) * 30,
+        size: 6 + pseudoRandom(i + 21) * 8,
+        delay: pseudoRandom(i + 31) * 2,
+        duration: 2.6 + pseudoRandom(i + 41) * 2.4,
       })),
     [],
   );
@@ -61,25 +69,27 @@ function HeroBackground() {
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.22),transparent_28%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.18),transparent_30%),linear-gradient(180deg,#050816_0%,#020617_60%,#000_100%)]" />
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(circle_at_center,black_35%,transparent_80%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.045)_1px,transparent_1px)] bg-size-[56px_56px] mask-[radial-gradient(circle_at_center,black_35%,transparent_80%)]" />
 
-      <AnimatedOrb
-        delay={0}
-        className="left-[12%] top-[18%] h-72 w-72 bg-cyan-400/20"
-      />
+      <div className="absolute inset-x-0 top-20 bottom-0 overflow-hidden">
+        <AnimatedOrb
+          delay={0}
+          className="left-[12%] top-[12%] h-72 w-72 bg-cyan-400/20"
+        />
 
-      <AnimatedOrb
-        delay={1.4}
-        className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/20"
-      />
+        <AnimatedOrb
+          delay={1.4}
+          className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/20"
+        />
 
-      {/* Sun and Moon removed — keeping backdrop and subtle animated orbs only */}
+        {/* Sun and Moon removed — keeping backdrop and subtle animated orbs only */}
 
-      {stars.map((star) => (
-        <Star key={star.id} {...star} />
-      ))}
+        {stars.map((star) => (
+          <Star key={star.id} {...star} />
+        ))}
 
-      <Snowfall count={120} />
+        <Snowfall count={120} />
+      </div>
     </div>
   );
 }
@@ -136,12 +146,12 @@ function Snowfall({ count = 70 }) {
     () =>
       Array.from({ length: count }, (_, i) => ({
         id: i,
-        left: Math.random() * 100,
-        size: 1 + Math.random() * 2,
-        duration: 8 + Math.random() * 10,
-        delay: -Math.random() * 12,
-        drift: (Math.random() - 0.5) * 120,
-        opacity: 0.25 + Math.random() * 0.55,
+        left: pseudoRandom(i + 101) * 100,
+        size: 1 + pseudoRandom(i + 111) * 2,
+        duration: 8 + pseudoRandom(i + 121) * 10,
+        delay: -pseudoRandom(i + 131) * 12,
+        drift: (pseudoRandom(i + 141) - 0.5) * 120,
+        opacity: 0.25 + pseudoRandom(i + 151) * 0.55,
       })),
     [count],
   );
@@ -191,7 +201,7 @@ function HeroContent() {
         className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
       >
         Hi, I&rsquo;m{" "}
-        <span className="bg-gradient-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
+        <span className="bg-linear-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
           Hasan
         </span>
         <span className="mt-2 block text-lg font-bold tracking-tight text-gray-200 sm:text-xl">
@@ -203,7 +213,7 @@ function HeroContent() {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ delay: 0.4, duration: 0.8 }}
-        className="mx-auto mt-6 h-px w-24 bg-gradient-to-r from-cyan-300 to-fuchsia-400"
+        className="mx-auto mt-6 h-px w-24 bg-linear-to-r from-cyan-300 to-fuchsia-400"
       />
 
       <motion.p
@@ -232,7 +242,7 @@ function HeroContent() {
 
         <a
           href="#projects"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white backdrop-blur-xl transition hover:border-cyan-300/40 hover:bg-white/[0.1]"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/6 px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white backdrop-blur-xl transition hover:border-cyan-300/40 hover:bg-white/10"
         >
           <CodeBracketIcon className="h-5 w-5" />
           View My Work

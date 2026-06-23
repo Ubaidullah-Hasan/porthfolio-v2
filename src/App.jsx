@@ -5,10 +5,11 @@ import Background from "./components/Background";
 import Contact from "./components/contact/Contact";
 import Experience from "./components/Experience";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
+// import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Hero from "./components/Hero";
 
 /**
  * Root component – stitches all sections together.

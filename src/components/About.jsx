@@ -37,10 +37,7 @@ const techStack = [
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="relative py-20 bg-charcoal/90 overflow-hidden"
-    >
+    <section className="relative py-20 bg-charcoal/90 overflow-hidden">
       {/* section background animation */}
       <StarField />
 
@@ -53,7 +50,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <div className="flex h-full items-center justify-center">
-            <div className="w-72 h-72 rounded-full bg-gradient-to-r from-cyan-300 via-fuchsia-400 to-emerald-300 p-[3px] sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+            <div className="w-72 h-72 rounded-full bg-linear-to-r from-cyan-300 via-fuchsia-400 to-emerald-300 p-0.75 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               <div className="h-full w-full overflow-hidden rounded-full bg-[#020617] p-2">
                 <img
                   src="https://ui-avatars.com/api/?name=Hasan&background=0f172a&color=38bdf8&size=512&bold=true"
@@ -70,7 +67,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8 z-10"
+          className="relative overflow-hidden rounded-4xl border border-white/10 bg-white/7 p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8 z-10"
           style={{ alignSelf: "stretch" }}
         >
           <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
@@ -78,7 +75,7 @@ export default function About() {
 
           <div className="relative">
             <div className="mb-6 flex items-center gap-4">
-              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-cyan-300 to-fuchsia-400 text-2xl font-black text-black shadow-lg shadow-cyan-500/20">
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-linear-to-br from-cyan-300 to-fuchsia-400 text-2xl font-black text-black shadow-lg shadow-cyan-500/20">
                 <img
                   src="https://ui-avatars.com/api/?name=Hasan&background=5EEAD4&color=000&size=64&bold=true"
                   alt="Hasan"
