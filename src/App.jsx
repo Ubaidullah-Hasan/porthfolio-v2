@@ -1,13 +1,16 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import About from "./components/About";
+import Background from "./components/Background";
+import Contact from "./components/contact/Contact";
+import CursorWaterEffect from "./components/CursorWaterEffect";
+import Experience from "./components/Experience";
+import Footer from "./components/Footer";
+// import Hero from "./components/Hero";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
 
 /**
  * Root component – stitches all sections together.
@@ -25,10 +28,12 @@ export default function App() {
 
   return (
     <motion.div
-      className="bg-charcoal text-white font-sans min-h-screen overflow-x-hidden"
+      className="relative bg-charcoal text-white font-sans min-h-screen overflow-x-hidden"
       initial={{ opacity: 0 }}
       animate={controls}
     >
+      <Background />
+      <CursorWaterEffect />
       {/* Fixed glass‑morphic navbar */}
       <Navbar />
 
@@ -39,10 +44,18 @@ export default function App() {
       <section id="about">
         <About />
       </section>
-      <section id="skills"><Skills /></section>
-      <section id="projects"><Projects /></section>
-      <section id="experience"><Experience /></section>
-      <section id="contact"><Contact /></section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="experience">
+        <Experience />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
 
       <Footer />
     </motion.div>

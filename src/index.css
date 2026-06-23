@@ -14,12 +14,17 @@
   --font-sans: "Inter", "system-ui", sans-serif;
 
   /* কাস্টম ব্যাকগ্রাউন্ড ইমেজ (মেশ গ্রাডিয়েন্ট) */
-  --background-image-mesh-gradient: radial-gradient(at 20% 20%, #0ff 0%, transparent 50%), radial-gradient(at 80% 80%, #9b5de5 0%, transparent 50%);
+  --background-image-mesh-gradient:
+    radial-gradient(at 20% 20%, #0ff 0%, transparent 50%),
+    radial-gradient(at 80% 80%, #9b5de5 0%, transparent 50%);
 }
-
-
 
 /* Global smooth‑scroll */
 html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
   scroll-behavior: smooth;
 }
