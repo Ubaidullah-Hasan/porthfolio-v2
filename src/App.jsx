@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import About from "./components/About";
+import CursorWaterEffect from "./components/CursorWaterEffect";
 import Background from "./components/Background";
 import Contact from "./components/contact/Contact";
 import Experience from "./components/Experience";
@@ -32,6 +33,7 @@ export default function App() {
       animate={controls}
     >
       <Background />
+      <CursorWaterEffect />
       {/* Fixed glass‑morphic navbar */}
       <Navbar />
 
