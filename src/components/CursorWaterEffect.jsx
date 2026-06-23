@@ -40,35 +40,35 @@ export default function CursorWaterEffect() {
     <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
       {/* Main glow (bright + visible on all sections) */}
       <motion.div
-        className="absolute h-72 w-72 rounded-full blur-3xl mix-blend-screen opacity-45"
+        className="absolute h-72 w-72 rounded-full blur-3xl mix-blend-screen opacity-65"
         style={{ x: mainX, y: mainY }}
       >
         <div
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 30% 30%, rgba(34,211,238,0.20) 0%, rgba(155,93,229,0.12) 38%, rgba(14,165,233,0.06) 62%, rgba(0,0,0,0) 78%)",
+              "radial-gradient(circle at 30% 30%, rgba(34,211,238,0.32) 0%, rgba(155,93,229,0.20) 38%, rgba(14,165,233,0.10) 62%, rgba(0,0,0,0) 78%)",
           }}
         />
       </motion.div>
 
       {/* Trailing water blob */}
       <motion.div
-        className="absolute h-44 w-44 rounded-full blur-2xl mix-blend-screen opacity-35"
+        className="absolute h-44 w-44 rounded-full blur-2xl mix-blend-screen opacity-50"
         style={{ x: trailX, y: trailY }}
       >
         <div
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.08) 0%, rgba(34,211,238,0.08) 28%, rgba(155,93,229,0.06) 56%, rgba(0,0,0,0) 74%)",
+              "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.14) 0%, rgba(34,211,238,0.12) 28%, rgba(155,93,229,0.08) 56%, rgba(0,0,0,0) 74%)",
           }}
         />
       </motion.div>
 
       {/* Crisp center marker / ring (optional but makes it feel “cursor-like”) */}
       <motion.div
-        className="absolute h-6 w-6 rounded-full border border-cyan-200/20 bg-cyan-200/5 backdrop-blur-sm"
+        className="absolute h-6 w-6 rounded-full border border-cyan-200/30 bg-cyan-200/8 backdrop-blur-sm"
         style={{ x: ringX, y: ringY }}
       />
     </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import ProjectCard from "./ProjectCard";
 import { projectsData } from "../data/projects";
+import ProjectCard from "./ProjectCard";
 import ProjectsPlanet from "./ProjectsPlanet";
 
 export default function Projects() {
