@@ -8,6 +8,7 @@ import Experience from './components/Experience';
 import Footer from './components/Footer';
 import Contact from "./components/contact/Contact";
 import Hero from "./components/Hero";
+import Background from './components/Background'
 
 /**
  * Root component – stitches all sections together.
@@ -25,10 +26,11 @@ export default function App() {
 
   return (
     <motion.div
-      className="bg-charcoal text-white font-sans min-h-screen overflow-x-hidden"
+      className="relative bg-charcoal text-white font-sans min-h-screen overflow-x-hidden"
       initial={{ opacity: 0 }}
       animate={controls}
     >
+      <Background />
       {/* Fixed glass‑morphic navbar */}
       <Navbar />
 

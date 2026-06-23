@@ -65,8 +65,7 @@ function HeroBackground() {
         className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/20"
       />
 
-      <Sun />
-      <Moon />
+      {/* Sun and Moon removed — keeping backdrop and subtle animated orbs only */}
 
       {stars.map((star) => (
         <Star key={star.id} {...star} />
@@ -96,45 +95,7 @@ function AnimatedOrb({ className, delay = 0 }) {
   );
 }
 
-function Sun() {
-  return (
-    <motion.div
-      className="absolute right-[10%] top-[12%] h-14 w-14 rounded-full bg-amber-300/80 shadow-[0_0_50px_rgba(251,191,36,0.65)]"
-      animate={{
-        y: [0, -12, 0],
-        scale: [1, 1.08, 1],
-        rotate: 360,
-      }}
-      transition={{
-        duration: 12,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    >
-      <div className="absolute inset-[-18px] rounded-full border border-amber-300/30" />
-    </motion.div>
-  );
-}
-
-function Moon() {
-  return (
-    <motion.div
-      className="absolute left-[10%] top-[14%] h-12 w-12 rounded-full bg-slate-100 shadow-[0_0_50px_rgba(147,197,253,0.55)]"
-      animate={{
-        y: [0, 14, 0],
-        x: [0, 8, 0],
-        scale: [1, 1.05, 1],
-      }}
-      transition={{
-        duration: 10,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    >
-      <div className="absolute right-1.5 top-2 h-9 w-9 rounded-full bg-[#050816]" />
-    </motion.div>
-  );
-}
+// Sun and Moon intentionally removed to simplify the hero visual.
 
 function Star({ x, y, size, delay, duration }) {
   return (
