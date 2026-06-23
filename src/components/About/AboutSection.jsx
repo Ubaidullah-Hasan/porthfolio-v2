@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import StarField from "../Hero/StarField";
 import AboutDetails from "./AboutDetails";
 import AboutImage from "./AboutImage";
+import AboutPlanet from "./AboutPlanet";
 
 export default function AboutSection() {
   return (
     <section className="relative overflow-hidden bg-charcoal/90 py-20">
       <StarField />
+      <AboutPlanet />
 
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:items-stretch">
         <motion.div

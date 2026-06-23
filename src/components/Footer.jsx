@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import FooterPlanet from "./FooterPlanet";
 
 const quickLinks = [
   { label: "Home", to: "hero" },
@@ -47,8 +48,9 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative bg-charcoal pt-16 pb-8"
+      className="relative overflow-hidden bg-charcoal pt-16 pb-8"
     >
+      <FooterPlanet />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-cyan-300 via-fuchsia-400 to-emerald-400" />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">

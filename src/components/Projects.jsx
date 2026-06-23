@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { projectsData } from "../data/projects";
+import ProjectsPlanet from "./ProjectsPlanet";
 
 export default function Projects() {
   return (
     <section className="relative isolate overflow-hidden bg-charcoal/90 py-20">
+      <ProjectsPlanet />
+
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.1),transparent_45%)]" />
       </div>
