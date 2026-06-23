@@ -6,24 +6,25 @@ export default function CursorWaterEffect() {
   const mouseY = useMotionValue(-100);
 
   const springX = useSpring(mouseX, {
-    stiffness: 160,
-    damping: 30,
+    stiffness: 180,
+    damping: 26,
     mass: 0.35,
   });
   const springY = useSpring(mouseY, {
-    stiffness: 160,
-    damping: 30,
+    stiffness: 180,
+    damping: 26,
     mass: 0.35,
   });
 
-  const mainX = useTransform(springX, (value) => value - 80);
-  const mainY = useTransform(springY, (value) => value - 80);
+  // Offset so the “water” centers under the cursor
+  const mainX = useTransform(springX, (v) => v - 140);
+  const mainY = useTransform(springY, (v) => v - 140);
 
-  const trailX = useTransform(springX, (value) => value - 56);
-  const trailY = useTransform(springY, (value) => value - 56);
+  const trailX = useTransform(springX, (v) => v - 95);
+  const trailY = useTransform(springY, (v) => v - 95);
 
-  const auraX = useTransform(springX, (value) => value - 144);
-  const auraY = useTransform(springY, (value) => value - 144);
+  const ringX = useTransform(springX, (v) => v - 16);
+  const ringY = useTransform(springY, (v) => v - 16);
 
   useEffect(() => {
     const handleMove = (event) => {
@@ -36,44 +37,39 @@ export default function CursorWaterEffect() {
   }, [mouseX, mouseY]);
 
   return (
-    <div
-      className="pointer-events-none fixed inset-0 overflow-hidden"
-      style={{ zIndex: 9999 }}
-    >
+    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden">
+      {/* Main glow (bright + visible on all sections) */}
       <motion.div
-        className="absolute h-40 w-40 rounded-full blur-2xl mix-blend-screen opacity-55"
+        className="absolute h-72 w-72 rounded-full blur-3xl mix-blend-screen opacity-90"
         style={{ x: mainX, y: mainY }}
       >
         <div
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 30% 30%, rgba(34,211,238,0.28) 0%, rgba(168,85,247,0.18) 34%, rgba(14,165,233,0.10) 58%, rgba(0,0,0,0) 78%)",
+              "radial-gradient(circle at 30% 30%, rgba(34,211,238,0.38) 0%, rgba(155,93,229,0.24) 38%, rgba(14,165,233,0.10) 62%, rgba(0,0,0,0) 78%)",
           }}
         />
       </motion.div>
 
+      {/* Trailing water blob */}
       <motion.div
-        className="absolute h-28 w-28 rounded-full blur-2xl opacity-45"
+        className="absolute h-44 w-44 rounded-full blur-2xl mix-blend-screen opacity-70"
         style={{ x: trailX, y: trailY }}
       >
         <div
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.10) 0%, rgba(34,211,238,0.12) 28%, rgba(168,85,247,0.08) 54%, rgba(0,0,0,0) 74%)",
+              "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.18) 0%, rgba(34,211,238,0.14) 28%, rgba(155,93,229,0.10) 56%, rgba(0,0,0,0) 74%)",
           }}
         />
       </motion.div>
 
+      {/* Crisp center marker / ring (optional but makes it feel “cursor-like”) */}
       <motion.div
-        className="absolute h-72 w-72 rounded-full blur-3xl opacity-20 mix-blend-screen"
-        style={{
-          x: auraX,
-          y: auraY,
-          background:
-            "radial-gradient(circle, rgba(34,211,238,0.06) 0%, rgba(168,85,247,0.05) 35%, rgba(14,165,233,0.03) 60%, transparent 78%)",
-        }}
+        className="absolute h-6 w-6 rounded-full border border-cyan-200/40 bg-cyan-200/10 backdrop-blur-sm"
+        style={{ x: ringX, y: ringY }}
       />
     </div>
   );
