@@ -1,14 +1,15 @@
-import { ArrowDownIcon } from '@heroicons/react/24/outline'
-import { motion } from 'framer-motion'
+import { ArrowDownIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
-export default function HeroScrollButton({ targetId = 'about', offset = 80 }) {
+export default function HeroScrollButton({ targetId = "about", offset = 80 }) {
   const handleScrollDown = () => {
-    const nextSection = document.getElementById(targetId)
+    const nextSection = document.getElementById(targetId);
     if (nextSection) {
-      const top = nextSection.getBoundingClientRect().top + window.scrollY - offset
-      window.scrollTo({ top, behavior: 'smooth' })
+      const top =
+        nextSection.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <motion.button
@@ -21,5 +22,5 @@ export default function HeroScrollButton({ targetId = 'about', offset = 80 }) {
     >
       <ArrowDownIcon className="h-6 w-6" />
     </motion.button>
-  )
+  );
 }

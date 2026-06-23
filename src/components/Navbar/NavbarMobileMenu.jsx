@@ -1,6 +1,6 @@
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Link } from 'react-scroll'
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 export default function NavbarMobileMenu({ navItems, isOpen, setIsOpen }) {
   return (
@@ -10,14 +10,18 @@ export default function NavbarMobileMenu({ navItems, isOpen, setIsOpen }) {
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
-        {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+        {isOpen ? (
+          <XMarkIcon className="h-6 w-6" />
+        ) : (
+          <Bars3Icon className="h-6 w-6" />
+        )}
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <motion.ul
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="overflow-hidden border-t border-white/10 bg-black/70 backdrop-blur-xl md:hidden"
@@ -51,5 +55,5 @@ export default function NavbarMobileMenu({ navItems, isOpen, setIsOpen }) {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }

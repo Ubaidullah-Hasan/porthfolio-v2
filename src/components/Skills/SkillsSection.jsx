@@ -1,13 +1,38 @@
-import { motion } from 'framer-motion'
-import { CodeBracketIcon, ServerIcon, WrenchIcon } from '@heroicons/react/24/outline'
-import { frontend, backend, tools } from '../../data/skills'
-import SkillCategoryCard from './SkillCategoryCard'
+import {
+  CodeBracketIcon,
+  ServerIcon,
+  WrenchIcon,
+} from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import { backend, frontend, tools } from "../../data/skills";
+import SkillCategoryCard from "./SkillCategoryCard";
 
 const categories = [
-  { title: 'Frontend', items: frontend, icon: CodeBracketIcon, color: 'from-cyan-400 to-cyan-500', border: 'border-l-cyan-400', tagColor: 'border-cyan-500/20 bg-cyan-500/10 text-cyan-200' },
-  { title: 'Backend', items: backend, icon: ServerIcon, color: 'from-fuchsia-400 to-fuchsia-500', border: 'border-l-fuchsia-400', tagColor: 'border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200' },
-  { title: 'Tools', items: tools, icon: WrenchIcon, color: 'from-emerald-400 to-emerald-500', border: 'border-l-emerald-400', tagColor: 'border-emerald-500/20 bg-emerald-500/10 text-emerald-200' },
-]
+  {
+    title: "Frontend",
+    items: frontend,
+    icon: CodeBracketIcon,
+    color: "from-cyan-400 to-cyan-500",
+    border: "border-l-cyan-400",
+    tagColor: "border-cyan-500/20 bg-cyan-500/10 text-cyan-200",
+  },
+  {
+    title: "Backend",
+    items: backend,
+    icon: ServerIcon,
+    color: "from-fuchsia-400 to-fuchsia-500",
+    border: "border-l-fuchsia-400",
+    tagColor: "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200",
+  },
+  {
+    title: "Tools",
+    items: tools,
+    icon: WrenchIcon,
+    color: "from-emerald-400 to-emerald-500",
+    border: "border-l-emerald-400",
+    tagColor: "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+  },
+];
 
 export default function SkillsSection() {
   return (
@@ -28,10 +53,14 @@ export default function SkillsSection() {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {categories.map((category, index) => (
-            <SkillCategoryCard key={category.title} category={category} index={index} />
+            <SkillCategoryCard
+              key={category.title}
+              category={category}
+              index={index}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

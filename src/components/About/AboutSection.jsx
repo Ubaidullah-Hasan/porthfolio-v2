@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
-import StarField from '../Hero/StarField'
-import AboutImage from './AboutImage'
-import AboutDetails from './AboutDetails'
+import { motion } from "framer-motion";
+import StarField from "../Hero/StarField";
+import AboutDetails from "./AboutDetails";
+import AboutImage from "./AboutImage";
 
 export default function AboutSection() {
   return (
@@ -30,5 +30,5 @@ export default function AboutSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

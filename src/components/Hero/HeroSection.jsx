@@ -1,6 +1,6 @@
-import HeroBackground from './HeroBackground'
-import HeroContent from './HeroContent'
-import HeroScrollButton from './HeroScrollButton'
+import HeroBackground from "./HeroBackground";
+import HeroContent from "./HeroContent";
+import HeroScrollButton from "./HeroScrollButton";
 
 export default function HeroSection() {
   return (
@@ -16,5 +16,5 @@ export default function HeroSection() {
 
       <HeroScrollButton targetId="about" />
     </section>
-  )
+  );
 }

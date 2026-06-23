@@ -1,9 +1,12 @@
-import { CloudArrowDownIcon, CodeBracketIcon } from '@heroicons/react/24/outline'
-import { motion } from 'framer-motion'
-import cvPdf from '../../assets/ubaidullah_hasan_CV.pdf'
+import {
+  CloudArrowDownIcon,
+  CodeBracketIcon,
+} from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import cvPdf from "../../assets/ubaidullah_hasan_CV.pdf";
 
 const professionalSummary =
-  'Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.'
+  "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
 
 export default function HeroContent() {
   return (
@@ -20,7 +23,7 @@ export default function HeroContent() {
         transition={{ delay: 0.1, duration: 0.7 }}
         className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
       >
-        Hi, I&rsquo;m{' '}
+        Hi, I&rsquo;m{" "}
         <span className="bg-linear-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
           Hasan
         </span>
@@ -69,5 +72,5 @@ export default function HeroContent() {
         </a>
       </motion.div>
     </motion.div>
-  )
+  );
 }

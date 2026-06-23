@@ -1,4 +1,4 @@
-import { Link } from 'react-scroll'
+import { Link } from "react-scroll";
 
 export default function NavbarBrand() {
   return (
@@ -11,5 +11,5 @@ export default function NavbarBrand() {
     >
       Hasan
     </Link>
-  )
+  );
 }

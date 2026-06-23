@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion'
-import StarField from '../Hero/StarField'
-import ExperienceHeader from './ExperienceHeader'
-import ExperienceSidebar from './ExperienceSidebar'
-import ExperienceCard from './ExperienceCard'
-import { experience } from '../../data/experience'
+import { experience } from "../../data/experience";
+import StarField from "../Hero/StarField";
+import ExperienceCard from "./ExperienceCard";
+import ExperienceHeader from "./ExperienceHeader";
+import ExperienceSidebar from "./ExperienceSidebar";
 
 export default function ExperienceSection() {
   return (
@@ -32,5 +31,5 @@ export default function ExperienceSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

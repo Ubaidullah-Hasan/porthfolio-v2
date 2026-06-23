@@ -1,11 +1,11 @@
-import { BriefcaseIcon } from '@heroicons/react/24/outline'
-import { motion } from 'framer-motion'
+import { BriefcaseIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 const stats = [
-  { label: 'Years', value: '6+' },
-  { label: 'Products', value: '30+' },
-  { label: 'Focus', value: 'Full Stack' },
-]
+  { label: "Years", value: "6+" },
+  { label: "Products", value: "30+" },
+  { label: "Focus", value: "Full Stack" },
+];
 
 export default function ExperienceSidebar() {
   return (
@@ -51,5 +51,5 @@ export default function ExperienceSidebar() {
         </p>
       </div>
     </motion.aside>
-  )
+  );
 }

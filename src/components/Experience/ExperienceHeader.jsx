@@ -1,5 +1,5 @@
-import { SparklesIcon } from '@heroicons/react/24/outline'
-import { motion } from 'framer-motion'
+import { SparklesIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 export default function ExperienceHeader() {
   return (
@@ -23,9 +23,9 @@ export default function ExperienceHeader() {
       </h2>
 
       <p className="mt-4 text-sm leading-7 text-gray-300 sm:text-base">
-        A condensed view of my journey building products, improving systems,
-        and shipping responsive interfaces with clean architecture.
+        A condensed view of my journey building products, improving systems, and
+        shipping responsive interfaces with clean architecture.
       </p>
     </motion.div>
-  )
+  );
 }

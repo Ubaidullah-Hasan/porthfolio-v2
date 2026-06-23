@@ -1,4 +1,4 @@
-import { Link } from 'react-scroll'
+import { Link } from "react-scroll";
 
 export default function NavbarDesktopMenu({ navItems }) {
   return (
@@ -29,5 +29,5 @@ export default function NavbarDesktopMenu({ navItems }) {
         </a>
       </li>
     </ul>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import SkillsSection from './Skills/SkillsSection'
+import SkillsSection from "./Skills/SkillsSection";
 
 export default function Skills() {
-  return <SkillsSection />
+  return <SkillsSection />;
 }

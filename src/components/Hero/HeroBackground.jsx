@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
-import { useMemo } from 'react'
+import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 const pseudoRandom = (seed) => {
-  const value = Math.sin(seed * 9999) * 10000
-  return value - Math.floor(value)
-}
+  const value = Math.sin(seed * 9999) * 10000;
+  return value - Math.floor(value);
+};
 
 export default function HeroBackground() {
   const stars = useMemo(
@@ -18,7 +18,7 @@ export default function HeroBackground() {
         duration: 2.6 + pseudoRandom(i + 41) * 2.4,
       })),
     [],
-  )
+  );
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -44,7 +44,7 @@ export default function HeroBackground() {
         <Snowfall count={120} />
       </div>
     </div>
-  )
+  );
 }
 
 function AnimatedOrb({ className, delay = 0 }) {
@@ -60,10 +60,10 @@ function AnimatedOrb({ className, delay = 0 }) {
         duration: 14,
         repeat: Infinity,
         delay,
-        ease: 'easeInOut',
+        ease: "easeInOut",
       }}
     />
-  )
+  );
 }
 
 function Star({ x, y, size, delay, duration }) {
@@ -84,12 +84,12 @@ function Star({ x, y, size, delay, duration }) {
         duration: duration * 10,
         repeat: Infinity,
         delay,
-        ease: 'easeInOut',
+        ease: "easeInOut",
       }}
     >
       ★
     </motion.span>
-  )
+  );
 }
 
 function Snowfall({ count = 70 }) {
@@ -105,7 +105,7 @@ function Snowfall({ count = 70 }) {
         opacity: 0.25 + pseudoRandom(i + 151) * 0.55,
       })),
     [count],
-  )
+  );
 
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -120,7 +120,7 @@ function Snowfall({ count = 70 }) {
           }}
           className="absolute -top-10 rounded-full bg-white"
           animate={{
-            y: ['-10vh', '110vh'],
+            y: ["-10vh", "110vh"],
             x: [0, flake.drift, -flake.drift / 2, 0],
             opacity: [0, flake.opacity, flake.opacity * 0.7, 0],
           }}
@@ -128,10 +128,10 @@ function Snowfall({ count = 70 }) {
             duration: flake.duration * 3,
             delay: flake.delay,
             repeat: Infinity,
-            ease: 'linear',
+            ease: "linear",
           }}
         />
       ))}
     </div>
-  )
+  );
 }

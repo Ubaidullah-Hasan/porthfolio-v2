@@ -1,5 +1,5 @@
-import NavbarShell from './Navbar/NavbarShell'
+import NavbarShell from "./Navbar/NavbarShell";
 
 export default function Navbar() {
-  return <NavbarShell />
+  return <NavbarShell />;
 }

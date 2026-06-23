@@ -11,5 +11,5 @@ export default function AboutImage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

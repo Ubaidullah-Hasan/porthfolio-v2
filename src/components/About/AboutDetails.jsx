@@ -1,36 +1,36 @@
 const quickFacts = [
-  { label: 'Role', value: 'Full Stack' },
-  { label: 'Backend', value: 'APIs + Auth' },
-  { label: 'Database', value: 'SQL / NoSQL' },
-]
+  { label: "Role", value: "Full Stack" },
+  { label: "Backend", value: "APIs + Auth" },
+  { label: "Database", value: "SQL / NoSQL" },
+];
 
 const techColors = [
-  'border-cyan-500/20 bg-cyan-500/10 text-cyan-200',
-  'border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200',
-  'border-emerald-500/20 bg-emerald-500/10 text-emerald-200',
-  'border-indigo-500/20 bg-indigo-500/10 text-indigo-200',
-  'border-pink-500/20 bg-pink-500/10 text-pink-200',
-  'border-teal-500/20 bg-teal-500/10 text-teal-200',
-  'border-violet-500/20 bg-violet-500/10 text-violet-200',
-  'border-rose-500/20 bg-rose-500/10 text-rose-200',
-  'border-cyan-500/20 bg-cyan-500/10 text-cyan-200',
-  'border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200',
-  'border-emerald-500/20 bg-emerald-500/10 text-emerald-200',
-]
+  "border-cyan-500/20 bg-cyan-500/10 text-cyan-200",
+  "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200",
+  "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+  "border-indigo-500/20 bg-indigo-500/10 text-indigo-200",
+  "border-pink-500/20 bg-pink-500/10 text-pink-200",
+  "border-teal-500/20 bg-teal-500/10 text-teal-200",
+  "border-violet-500/20 bg-violet-500/10 text-violet-200",
+  "border-rose-500/20 bg-rose-500/10 text-rose-200",
+  "border-cyan-500/20 bg-cyan-500/10 text-cyan-200",
+  "border-fuchsia-500/20 bg-fuchsia-500/10 text-fuchsia-200",
+  "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+];
 
 const techStack = [
-  'React',
-  'Next.js',
-  'JavaScript',
-  'TypeScript',
-  'Node.js',
-  'Express',
-  'Tailwind CSS',
-  'MongoDB',
-  'PostgreSQL',
-  'REST API',
-  'Authentication',
-]
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "Tailwind CSS",
+  "MongoDB",
+  "PostgreSQL",
+  "REST API",
+  "Authentication",
+];
 
 export default function AboutDetails() {
   return (
@@ -116,5 +116,5 @@ export default function AboutDetails() {
         </div>
       </div>
     </div>
-  )
+  );
 }

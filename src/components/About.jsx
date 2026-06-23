@@ -1,5 +1,5 @@
-import AboutSection from './About/AboutSection'
+import AboutSection from "./About/AboutSection";
 
 export default function About() {
-  return <AboutSection />
+  return <AboutSection />;
 }
