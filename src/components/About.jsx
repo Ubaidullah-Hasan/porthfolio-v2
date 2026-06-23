@@ -22,13 +22,25 @@ const techColors = [
 ];
 
 const techStack = [
-  "React", "Next.js", "JavaScript", "TypeScript", "Node.js",
-  "Express", "Tailwind CSS", "MongoDB", "PostgreSQL", "REST API", "Authentication",
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "Node.js",
+  "Express",
+  "Tailwind CSS",
+  "MongoDB",
+  "PostgreSQL",
+  "REST API",
+  "Authentication",
 ];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 bg-charcoal/90 overflow-hidden">
+    <section
+      id="about"
+      className="relative py-20 bg-charcoal/90 overflow-hidden"
+    >
       {/* section background animation */}
       <StarField />
 
@@ -43,11 +55,11 @@ export default function About() {
           <div className="flex h-full items-center justify-center">
             <div className="w-72 h-72 rounded-full bg-gradient-to-r from-cyan-300 via-fuchsia-400 to-emerald-300 p-[3px] sm:w-80 sm:h-80 lg:w-96 lg:h-96">
               <div className="h-full w-full overflow-hidden rounded-full bg-[#020617] p-2">
-              <img
-                src="https://ui-avatars.com/api/?name=Hasan&background=0f172a&color=38bdf8&size=512&bold=true"
-                alt="Hasan"
+                <img
+                  src="https://ui-avatars.com/api/?name=Hasan&background=0f172a&color=38bdf8&size=512&bold=true"
+                  alt="Hasan"
                   className="h-full w-full rounded-full object-cover"
-              />
+                />
               </div>
             </div>
           </div>
@@ -59,7 +71,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.8, delay: 0.15 }}
           className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8 z-10"
-          style={{ alignSelf: 'stretch' }}
+          style={{ alignSelf: "stretch" }}
         >
           <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
           <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-fuchsia-500/20 blur-3xl" />
@@ -86,9 +98,9 @@ export default function About() {
 
             <p className="text-sm leading-7 text-gray-300">
               I enjoy solving real-world problems through clean code, scalable
-              architecture, and modern engineering practices. My goal is to become a
-              highly skilled Software Engineer capable of designing and building
-              impactful products from concept to deployment.
+              architecture, and modern engineering practices. My goal is to
+              become a highly skilled Software Engineer capable of designing and
+              building impactful products from concept to deployment.
             </p>
 
             <div className="mt-6 grid grid-cols-3 gap-3">

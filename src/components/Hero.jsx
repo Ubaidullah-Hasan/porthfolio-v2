@@ -12,9 +12,9 @@ const professionalSummary =
 
 export default function Hero() {
   const handleScrollDown = () => {
-    const nextSection = document.getElementById('about');
+    const nextSection = document.getElementById("about");
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' });
+      nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 

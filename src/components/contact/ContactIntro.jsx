@@ -34,20 +34,24 @@ export default function ContactIntro() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-              className={`flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-r ${item.gradient} p-4`}
+            className={`flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-r ${item.gradient} p-4`}
           >
-              <div className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-2xl bg-white/10 text-xl text-white">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent opacity-70"
-                  animate={{ rotate: [0, 180, 360], scale: [1, 1.08, 1] }}
-                  transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-                />
-                <motion.div
-                  className="absolute inset-[-30%] rounded-full bg-cyan-300/20 blur-xl"
-                  animate={{ x: [-4, 4, -4], y: [0, -4, 0] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                />
-                <span className="relative z-10">{item.icon}</span>
+            <div className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-2xl bg-white/10 text-xl text-white">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent opacity-70"
+                animate={{ rotate: [0, 180, 360], scale: [1, 1.08, 1] }}
+                transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute inset-[-30%] rounded-full bg-cyan-300/20 blur-xl"
+                animate={{ x: [-4, 4, -4], y: [0, -4, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 4,
+                  ease: "easeInOut",
+                }}
+              />
+              <span className="relative z-10">{item.icon}</span>
             </div>
 
             <div>

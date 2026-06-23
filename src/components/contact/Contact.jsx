@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import StarField from "../Hero/StarField";
-import ContactIntro from "./ContactIntro";
 import ContactForm from "./ContactForm";
+import ContactIntro from "./ContactIntro";
 
 export default function Contact() {
   return (

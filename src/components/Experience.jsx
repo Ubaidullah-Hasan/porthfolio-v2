@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { BriefcaseIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 import { experience } from "../data/experience";
 import StarField from "./Hero/StarField";
 
@@ -64,7 +64,9 @@ export default function Experience() {
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200">
                   Career Snapshot
                 </p>
-                <h3 className="text-2xl font-bold text-white">Crafting modern digital products</h3>
+                <h3 className="text-2xl font-bold text-white">
+                  Crafting modern digital products
+                </h3>
               </div>
             </div>
 
@@ -77,15 +79,18 @@ export default function Experience() {
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                     {stat.label}
                   </p>
-                  <p className="mt-2 text-2xl font-black text-white">{stat.value}</p>
+                  <p className="mt-2 text-2xl font-black text-white">
+                    {stat.value}
+                  </p>
                 </div>
               ))}
             </div>
 
             <div className="mt-6 rounded-2xl border border-white/10 bg-black/25 p-4">
               <p className="text-sm leading-7 text-gray-300">
-                I focus on building fast interfaces, scalable APIs, and maintainable
-                systems that feel premium from first interaction to final delivery.
+                I focus on building fast interfaces, scalable APIs, and
+                maintainable systems that feel premium from first interaction to
+                final delivery.
               </p>
             </div>
           </motion.aside>
