@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import FooterPlanet from "./FooterPlanet";
+import Snowfall from "./Snowfall";
 
 const quickLinks = [
   { label: "Home", to: "hero" },
@@ -50,6 +51,7 @@ export default function Footer() {
       transition={{ duration: 0.6 }}
       className="relative overflow-hidden bg-charcoal pt-16 pb-8"
     >
+      <Snowfall count={30} />
       <FooterPlanet />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-cyan-300 via-fuchsia-400 to-emerald-400" />
 

@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import { projectsData } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectsPlanet from "./ProjectsPlanet";
+import Snowfall from "./Snowfall";
 
 export default function Projects() {
   return (
     <section className="relative isolate overflow-hidden bg-charcoal/90 py-20">
       <ProjectsPlanet />
+      <Snowfall count={40} />
 
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.1),transparent_45%)]" />

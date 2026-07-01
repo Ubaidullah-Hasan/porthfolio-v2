@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
 import ContactIntro from "./ContactIntro";
+import Snowfall from "../Snowfall";
 
 export default function Contact() {
   return (
@@ -11,6 +12,7 @@ export default function Contact() {
       transition={{ duration: 0.8 }}
       className="relative isolate overflow-hidden bg-[#050816] py-24"
     >
+      <Snowfall count={40} />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.20),transparent_35%),radial-gradient(circle_at_top_right,rgba(168,85,247,0.20),transparent_35%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent)]" />
 

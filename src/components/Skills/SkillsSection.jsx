@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { backend, frontend, tools } from "../../data/skills";
+import Snowfall from "../Snowfall";
 import SkillCategoryCard from "./SkillCategoryCard";
 
 const categories = [
@@ -37,6 +38,8 @@ const categories = [
 export default function SkillsSection() {
   return (
     <section className="relative isolate overflow-hidden bg-charcoal py-24">
+      <Snowfall count={40} />
+
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(34,211,238,0.12),transparent_50%)]" />
       </div>

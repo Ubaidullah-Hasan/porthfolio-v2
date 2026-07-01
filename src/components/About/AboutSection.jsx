@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import AboutDetails from "./AboutDetails";
 import AboutImage from "./AboutImage";
-import AboutPlanet from "./AboutPlanet";
+import Snowfall from "../Snowfall";
 
 export default function AboutSection() {
   return (
     <section className="relative overflow-hidden bg-charcoal/90 py-20">
-      <AboutPlanet />
+      <Snowfall count={40} />
 
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 px-4 md:grid-cols-2 md:items-stretch">
         <motion.div
