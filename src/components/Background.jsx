@@ -10,12 +10,14 @@ export default function Background() {
       {/* gentle animated orbs */}
       <motion.div
         className="absolute left-8 top-12 w-44 h-44 rounded-full bg-cyan-400/10 blur-3xl"
+        style={{ willChange: 'transform' }}
         animate={{ y: [0, -12, 0], x: [0, 8, 0], scale: [1, 1.06, 1] }}
         transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
       />
 
       <motion.div
         className="absolute right-12 bottom-8 w-64 h-64 rounded-full bg-fuchsia-500/10 blur-3xl"
+        style={{ willChange: 'transform' }}
         animate={{ y: [0, 12, 0], x: [0, -8, 0], scale: [1, 1.04, 1] }}
         transition={{ repeat: Infinity, duration: 22, ease: "easeInOut" }}
       />

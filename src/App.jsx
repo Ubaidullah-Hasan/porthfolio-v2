@@ -1,16 +1,21 @@
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import About from "./components/About";
+import { lazy, Suspense, useEffect } from "react";
 import Background from "./components/Background";
-import Contact from "./components/contact/Contact";
 import CursorWaterEffect from "./components/CursorWaterEffect";
-import Experience from "./components/Experience";
-import Footer from "./components/Footer";
-// import Hero from "./components/Hero";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
+
+// Lazy-load below-fold sections — deferred until scrolled into view
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Experience = lazy(() => import("./components/Experience"));
+const Contact = lazy(() => import("./components/contact/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
+
+function SectionFallback() {
+  return <div className="min-h-[40vh]" />;
+}
 
 /**
  * Root component – stitches all sections together.
@@ -41,23 +46,40 @@ export default function App() {
       <section id="hero">
         <Hero />
       </section>
-      <section id="about">
-        <About />
-      </section>
-      <section id="skills">
-        <Skills />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="experience">
-        <Experience />
-      </section>
-      <section id="contact">
-        <Contact />
-      </section>
 
-      <Footer />
+      <Suspense fallback={<SectionFallback />}>
+        <section id="about">
+          <About />
+        </section>
+      </Suspense>
+
+      <Suspense fallback={<SectionFallback />}>
+        <section id="skills">
+          <Skills />
+        </section>
+      </Suspense>
+
+      <Suspense fallback={<SectionFallback />}>
+        <section id="projects">
+          <Projects />
+        </section>
+      </Suspense>
+
+      <Suspense fallback={<SectionFallback />}>
+        <section id="experience">
+          <Experience />
+        </section>
+      </Suspense>
+
+      <Suspense fallback={<SectionFallback />}>
+        <section id="contact">
+          <Contact />
+        </section>
+      </Suspense>
+
+      <Suspense fallback={<SectionFallback />}>
+        <Footer />
+      </Suspense>
     </motion.div>
   );
 }

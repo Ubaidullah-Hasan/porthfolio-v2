@@ -41,7 +41,7 @@ export default function HeroBackground() {
           <Star key={star.id} {...star} />
         ))}
 
-        <Snowfall count={120} />
+        <Snowfall count={50} />
       </div>
     </div>
   );
@@ -51,6 +51,7 @@ function AnimatedOrb({ className, delay = 0 }) {
   return (
     <motion.div
       className={`absolute rounded-full blur-3xl ${className}`}
+      style={{ willChange: 'transform' }}
       animate={{
         scale: [1, 1.18, 1],
         x: [0, 28, -22, 0],
@@ -74,7 +75,7 @@ function Star({ x, y, size, delay, duration }) {
         top: `${y}%`,
         fontSize: size,
       }}
-      className="absolute text-cyan-100 drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]"
+      className="absolute text-cyan-100"
       animate={{
         opacity: [0.2, 1, 0.2],
         scale: [0.8, 1.4, 0.8],

@@ -7,10 +7,11 @@ function Planet({ size, position, colors, ringSpeeds, floatDuration }) {
       className={`absolute ${position}`}
       animate={{ y: [0, -(s * 0.06), 0] }}
       transition={{ repeat: Infinity, duration: floatDuration || 8, ease: "easeInOut" }}
+      style={{ willChange: 'transform', transform: 'translateZ(0)' }}
     >
       <div className="relative flex items-center justify-center">
         <div
-          className="rounded-full blur-[80px]"
+          className="rounded-full blur-[40px]"
           style={{
             width: s * 1.5,
             height: s * 1.5,
@@ -20,12 +21,13 @@ function Planet({ size, position, colors, ringSpeeds, floatDuration }) {
         />
 
         <motion.div
-          className="absolute rounded-full blur-[40px]"
+          className="absolute rounded-full blur-[25px]"
           style={{
             width: s,
             height: s,
             background: `linear-gradient(135deg, ${colors[0]}, ${colors[1]}, ${colors[2]})`,
             opacity: 0.3,
+            willChange: 'transform',
           }}
           animate={{ rotate: 360, scale: [1, 1.08, 1] }}
           transition={{
@@ -35,7 +37,7 @@ function Planet({ size, position, colors, ringSpeeds, floatDuration }) {
         />
 
         <div
-          className="absolute rounded-full blur-[20px]"
+          className="absolute rounded-full blur-[15px]"
           style={{
             width: s * 0.75,
             height: s * 0.75,
@@ -45,7 +47,7 @@ function Planet({ size, position, colors, ringSpeeds, floatDuration }) {
         />
 
         <div
-          className="absolute rounded-full blur-[10px]"
+          className="absolute rounded-full blur-[8px]"
           style={{
             width: s * 0.5,
             height: s * 0.5,
