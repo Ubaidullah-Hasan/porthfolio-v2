@@ -15,12 +15,10 @@ function DashboardContent() {
     e.preventDefault();
     setAuthLoading(true);
     setAuthError("");
-    const {data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const {error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) setAuthError(error.message);
     setAuthLoading(false);
-    console.log("Login response:", data, error);
   };
-  console.log("User in DashboardContent:", user);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
