@@ -1,23 +1,21 @@
-import { DashboardProvider, useDashboard } from "./context/DashboardContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import LoginForm from "./components/LoginForm";
 import DashboardShell from "./components/DashboardShell";
 import LoadingSpinner from "./components/LoadingSpinner";
-import { useAuth } from "./hooks/useAuth";
 
 function AuthGate() {
-  const { user, loading } = useDashboard();
-  const auth = useAuth();
+  const { user, loading, handleLogout } = useAuth();
 
   if (loading) return <LoadingSpinner />;
-  if (!user) return <LoginForm {...auth} onSubmit={auth.handleLogin} />;
+  if (!user) return <LoginForm />;
 
-  return <DashboardShell onLogout={auth.handleLogout} />;
+  return <DashboardShell onLogout={handleLogout} />;
 }
 
 export default function DashboardLayout() {
   return (
-    <DashboardProvider>
+    <AuthProvider>
       <AuthGate />
-    </DashboardProvider>
+    </AuthProvider>
   );
 }

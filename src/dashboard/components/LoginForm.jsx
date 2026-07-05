@@ -1,16 +1,13 @@
-export default function LoginForm({
-  email,
-  setEmail,
-  password,
-  setPassword,
-  authError,
-  authLoading,
-  onSubmit,
-}) {
+import { useAuth } from "../context/AuthContext";
+
+export default function LoginForm() {
+  const { email, setEmail, password, setPassword, authError, authLoading, handleLogin } =
+    useAuth();
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-charcoal px-4">
       <form
-        onSubmit={onSubmit}
+        onSubmit={handleLogin}
         className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
       >
         <h2 className="mb-6 text-center text-2xl font-bold text-white">
