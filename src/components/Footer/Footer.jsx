@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import FooterPlanet from "./FooterPlanet";
-import Snowfall from "./Snowfall";
+import Snowfall from "../Snowfall";
 
 const quickLinks = [
   { label: "Home", to: "hero" },

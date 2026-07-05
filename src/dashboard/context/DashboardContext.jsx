@@ -27,6 +27,8 @@ export function DashboardProvider({ children }) {
     return () => subscription.unsubscribe();
   }, []);
 
+  console.log("DashboardContext user:", user);
+
   return (
     <DashboardContext.Provider value={{ user, loading }}>
       {children}

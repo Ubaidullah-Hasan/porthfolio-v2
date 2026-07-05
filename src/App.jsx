@@ -2,16 +2,16 @@ import { motion, useAnimation } from "framer-motion";
 import { lazy, Suspense, useEffect } from "react";
 import Background from "./components/Background";
 import CursorWaterEffect from "./components/CursorWaterEffect";
-import Hero from "./components/Hero";
+import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar";
 
 // Lazy-load below-fold sections — deferred until scrolled into view
-const About = lazy(() => import("./components/About"));
-const Skills = lazy(() => import("./components/Skills"));
-const Projects = lazy(() => import("./components/Projects"));
-const Experience = lazy(() => import("./components/Experience"));
-const Contact = lazy(() => import("./components/contact/Contact"));
-const Footer = lazy(() => import("./components/Footer"));
+const About = lazy(() => import("./components/About/About"));
+const Skills = lazy(() => import("./components/Skills/Skills"));
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Experience = lazy(() => import("./components/Experience/Experience"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
 
 function SectionFallback() {
   return <div className="min-h-[40vh]" />;

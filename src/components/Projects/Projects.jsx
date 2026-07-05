@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { projectsData } from "../data/projects";
+import { projectsData } from "../../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectsPlanet from "./ProjectsPlanet";
-import Snowfall from "./Snowfall";
+import Snowfall from "../Snowfall";
 
 export default function Projects() {
   return (
