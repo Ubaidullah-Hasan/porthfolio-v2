@@ -5,7 +5,7 @@ import { createContext, useEffect, useState } from "react";
 export const PortfolioContext = createContext(null);
 
 export const PortfolioProvider = ({ children }) => {
-  const [profile, setProfile] = useState(null);
+  const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,7 +17,7 @@ export const PortfolioProvider = ({ children }) => {
         setError(null);
         const data = await getProfile();
         if (!cancelled) {
-          setProfile(data);
+          setProfileData(data);
         }
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -39,8 +39,8 @@ export const PortfolioProvider = ({ children }) => {
   }, []);
 
   const defaultValues = {
-    profile,
-    setProfile,
+    profileData,
+    setProfileData,
     loading,
     setLoading,
     error,

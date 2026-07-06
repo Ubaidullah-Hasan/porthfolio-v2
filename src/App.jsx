@@ -1,10 +1,11 @@
-import { motion, useAnimation } from "framer-motion";
-import { lazy, Suspense, useContext, useEffect } from "react";
+import { motion } from "framer-motion";
+import { lazy, Suspense, useContext } from "react";
 import Background from "./components/Background";
 import CursorWaterEffect from "./components/CursorWaterEffect";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar";
 import { PortfolioContext } from "./context/PortfolioProvider";
+import LoadingSpinner from "./components/ui/LoadingSpinner";
 
 // Lazy-load below-fold sections — deferred until scrolled into view
 const About = lazy(() => import("./components/About/About"));
@@ -15,7 +16,7 @@ const Contact = lazy(() => import("./components/Contact/Contact"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
 
 function SectionFallback() {
-  return <div className="min-h-[40vh]" />;
+  return <LoadingSpinner fullScreen={false} />;
 }
 
 /**
@@ -23,22 +24,16 @@ function SectionFallback() {
  * The `motion.div` wrapper provides a global fade‑in on page load.
  */
 export default function App() {
-  const controls = useAnimation();
-  const { profile, loading } = useContext(PortfolioContext);
-  console.log("App.jsx - profile:", profile, "loading:", loading);
+  const { profileData, loading } = useContext(PortfolioContext);
 
-  useEffect(() => {
-    controls.start({
-      opacity: 1,
-      transition: { duration: 0.8 },
-    });
-  }, [controls]);
+  if (loading) return <LoadingSpinner />;
 
   return (
     <motion.div
       className="relative bg-charcoal text-white font-sans min-h-screen overflow-x-hidden"
       initial={{ opacity: 0 }}
-      animate={controls}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
       <Background />
       <CursorWaterEffect />
