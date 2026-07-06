@@ -1,9 +1,10 @@
 import { motion, useAnimation } from "framer-motion";
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useContext, useEffect } from "react";
 import Background from "./components/Background";
 import CursorWaterEffect from "./components/CursorWaterEffect";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar";
+import { PortfolioContext } from "./context/PortfolioProvider";
 
 // Lazy-load below-fold sections — deferred until scrolled into view
 const About = lazy(() => import("./components/About/About"));
@@ -23,6 +24,7 @@ function SectionFallback() {
  */
 export default function App() {
   const controls = useAnimation();
+  const { profile, } = useContext(PortfolioContext);
 
   useEffect(() => {
     controls.start({

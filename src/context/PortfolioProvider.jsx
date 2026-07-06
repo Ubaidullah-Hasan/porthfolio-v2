@@ -1,7 +1,8 @@
 import { getProfile } from "@/services/profile.service";
 import { createContext, useEffect, useState } from "react";
 
-const PortfolioContext = createContext(null);
+// eslint-disable-next-line react-refresh/only-export-components
+export const PortfolioContext = createContext(null);
 
 export const PortfolioProvider = ({ children }) => {
   const [profile, setProfile] = useState(null);

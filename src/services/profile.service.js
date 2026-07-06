@@ -1,7 +1,7 @@
 import { supabase } from "@/lib/supabase";
 
 export async function getProfile() {
-  const { data: profile, error } = supabase
+  const { data: profile, error } = await supabase
     .from("profiles")
     .select("*")
     .single();
