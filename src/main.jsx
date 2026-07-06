@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";
+import { PortfolioProvider } from "./context/PortfolioProvider";
 import "./index.css";
 import router from "./routes/Routes";
 
@@ -25,6 +26,8 @@ scrollToHash();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <PortfolioProvider>
+      <RouterProvider router={router} />
+    </PortfolioProvider>
   </StrictMode>,
 );

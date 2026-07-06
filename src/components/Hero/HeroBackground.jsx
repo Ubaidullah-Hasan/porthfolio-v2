@@ -34,14 +34,14 @@ export default function HeroBackground() {
 
         <AnimatedOrb
           delay={1.4}
-          className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/[0.08]"
+          className="right-[16%] bottom-[12%] h-96 w-96 bg-fuchsia-500/8"
         />
 
         {stars.map((star) => (
           <Star key={star.id} {...star} />
         ))}
 
-        <Snowfall count={50} />
+        <Snowfall count={400} />
       </div>
     </div>
   );
@@ -77,9 +77,9 @@ function Star({ x, y, size, delay, duration }) {
       }}
       className="absolute text-cyan-100"
       animate={{
-        opacity: [0.2, 1, 0.2],
-        scale: [0.8, 1.4, 0.8],
-        rotate: [0, 90, 180, 270, 360],
+        opacity: [0.4, 1, 0.4],
+        scale: [0.3, 1.4, 0.3],
+        rotate: [0,  360],
       }}
       transition={{
         duration: duration * 10,
