@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
-import ParticleAnimation from "./ParticleAnimation";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -10,25 +9,6 @@ const fadeIn = {
     transition: { delay: i * 0.12, duration: 0.6, ease: "easeOut" },
   }),
 };
-
-function FloatingOrb({ className, delay = 0 }) {
-  return (
-    <motion.div
-      className={`absolute rounded-full blur-3xl opacity-15 ${className}`}
-      animate={{
-        y: [0, -30, 0],
-        x: [0, 15, 0],
-        scale: [1, 1.15, 1],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
-      }}
-    />
-  );
-}
 
 export default function LoginForm() {
   const {
@@ -43,7 +23,6 @@ export default function LoginForm() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#050508] px-4">
-      <ParticleAnimation />
 
       {/* Main content */}
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
