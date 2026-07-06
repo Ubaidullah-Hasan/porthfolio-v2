@@ -9,22 +9,33 @@ export const PortfolioProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchProfile = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await getProfile();
-      setProfile(data);
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let cancelled = false;
+
+    async function fetchProfile() {
+      try {
+        setError(null);
+        const data = await getProfile();
+        if (!cancelled) {
+          setProfile(data);
+        }
+      } catch (err) {
+        console.error("Error fetching profile:", err);
+        if (!cancelled) {
+          setError(err);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
     fetchProfile();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const defaultValues = {

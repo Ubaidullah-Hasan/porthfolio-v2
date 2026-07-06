@@ -9,6 +9,7 @@ export async function getProfile() {
       console.error("Error fetching profile:", error);
       throw new Error("Error fetching profile:", error);
   }
+  console.log("Fetched profile data:", profile);
   return profile;
 }
 

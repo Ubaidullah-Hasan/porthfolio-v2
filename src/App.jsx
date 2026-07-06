@@ -24,7 +24,8 @@ function SectionFallback() {
  */
 export default function App() {
   const controls = useAnimation();
-  const { profile, } = useContext(PortfolioContext);
+  const { profile, loading } = useContext(PortfolioContext);
+  console.log("App.jsx - profile:", profile, "loading:", loading);
 
   useEffect(() => {
     controls.start({
