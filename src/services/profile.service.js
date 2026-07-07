@@ -16,7 +16,7 @@ export async function getProfile() {
 /**
  * Update Portfolio Profile
  */
-export async function updateProfile(updatedProfileData) {
+export async function updateProfileService(updatedProfileData) {
   const { data, error } = await supabase
     .from("profiles")
     .update(updatedProfileData)

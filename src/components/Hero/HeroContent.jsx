@@ -31,8 +31,11 @@ export default function HeroContent({ profileData }) {
         </span>
         <span className="mt-2 block font-light tracking-tight text-gray-200 sm:text-xl">
           <TypeWriter
-            words={["Software Engineer", "Full Stack Developer"]}
-            direction="rtl"
+            words={[
+              { text: "Software Engineer", direction: "ltr" },
+              { text: "Full Stack Developer", direction: "rtl" },
+            ]}
+            divider="💡"
             typeSpeed={70}
             deleteSpeed={40}
             pauseDuration={2000}

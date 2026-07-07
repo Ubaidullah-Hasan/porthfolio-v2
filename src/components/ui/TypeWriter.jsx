@@ -1,96 +1,129 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+function normalizeEntry(entry) {
+  if (typeof entry === "string") {
+    return { text: entry, direction: "ltr" };
+  }
+  return { text: entry.text, direction: entry.direction || "ltr" };
+}
 
 /**
- * Reusable typing animation component.
+ * Reusable typing animation — multiple words on one row, continuous loop.
  *
  * @param {Object} props
- * @param {string[]} props.words - Array of words/phrases to cycle through
- * @param {"ltr" | "rtl"} props.direction - Text direction: "ltr" (left-to-right) or "rtl" (right-to-left)
- * @param {number} [props.typeSpeed=80] - Milliseconds per character when typing
- * @param {number} [props.deleteSpeed=50] - Milliseconds per character when deleting
- * @param {number} [props.pauseDuration=1500] - Pause after typing a word before deleting
- * @param {string} [props.className] - Additional CSS classes
- * @param {string} [props.cursorClassName] - Custom cursor styling
+ * @param {(string | { text: string, direction: "ltr" | "rtl" })[]} props.words
+ * @param {number} [props.typeSpeed=70]
+ * @param {number} [props.deleteSpeed=40]
+ * @param {number} [props.pauseDuration=2000]
+ * @param {string} [props.divider="|"]
+ * @param {string} [props.className]
  */
 export default function TypeWriter({
-  words,
-  direction = "ltr",
-  typeSpeed = 80,
-  deleteSpeed = 50,
-  pauseDuration = 1500,
+  words = [],
+  typeSpeed = 70,
+  deleteSpeed = 40,
+  pauseDuration = 2000,
+  divider = "|",
   className = "",
-  cursorClassName = "",
 }) {
-  const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const entries = words.map(normalizeEntry);
 
-  const currentWord = words[wordIndex];
-  const displayText = isDeleting
-    ? currentWord.slice(0, charIndex)
-    : currentWord.slice(0, charIndex);
+  // Mutable state — no re-render dependency issues
+  const charIndicesRef = useRef(entries.map(() => 0));
+  const [renderKey, setRenderKey] = useState(0);
+  const forceRender = () => setRenderKey((k) => k + 1);
 
   useEffect(() => {
-    if (isPaused) return;
+    if (entries.length === 0) return;
 
-    const speed = isDeleting ? deleteSpeed : typeSpeed;
+    let mounted = true;
+    const timers = [];
 
-    // Typing complete → pause then start deleting
-    if (!isDeleting && charIndex === currentWord.length) {
-      setIsPaused(true);
-      const pauseTimer = setTimeout(() => {
-        setIsPaused(false);
-        setIsDeleting(true);
-      }, pauseDuration);
-      return () => clearTimeout(pauseTimer);
+    function delay(ms) {
+      return new Promise((resolve) => {
+        const id = setTimeout(() => {
+          if (mounted) resolve();
+        }, ms);
+        timers.push(id);
+      });
     }
 
-    // Deleting complete → move to next word
-    if (isDeleting && charIndex === 0) {
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % words.length);
-      return;
+    async function runLoop() {
+      while (mounted) {
+        // --- TYPE phase ---
+        charIndicesRef.current = entries.map(() => 0);
+
+        while (mounted) {
+          let allDone = true;
+          entries.forEach((entry, i) => {
+            if (charIndicesRef.current[i] < entry.text.length) {
+              allDone = false;
+              charIndicesRef.current[i]++;
+            }
+          });
+          forceRender();
+          if (allDone) break;
+          await delay(typeSpeed + 30);
+        }
+
+        // --- PAUSE phase ---
+        await delay(pauseDuration);
+        if (!mounted) break;
+
+        // --- DELETE phase ---
+        while (mounted) {
+          let allEmpty = true;
+          entries.forEach((_, i) => {
+            if (charIndicesRef.current[i] > 0) {
+              allEmpty = false;
+              charIndicesRef.current[i]--;
+            }
+          });
+          forceRender();
+          if (allEmpty) break;
+          await delay(deleteSpeed);
+        }
+
+        // --- Short gap before restart ---
+        await delay(400);
+      }
     }
 
-    const timer = setTimeout(() => {
-      setCharIndex((prev) => (isDeleting ? prev - 1 : prev + 1));
-    }, speed);
+    runLoop();
 
-    return () => clearTimeout(timer);
-  }, [
-    charIndex,
-    isDeleting,
-    isPaused,
-    currentWord,
-    typeSpeed,
-    deleteSpeed,
-    pauseDuration,
-    words.length,
-  ]);
+    return () => {
+      mounted = false;
+      timers.forEach(clearTimeout);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const isRtl = direction === "rtl";
+  const charIndices = charIndicesRef.current;
 
   return (
-    <span
-      className={`inline-block ${className}`}
-      dir={isRtl ? "rtl" : "ltr"}
-    >
-      <span
-        className={isRtl ? "inline-block text-right" : "inline-block text-left"}
-      >
-        {displayText}
-      </span>
-      <span
-        className={`ml-0.5 inline-block h-[1em] w-[2px] animate-pulse align-middle ${
-          cursorClassName || "bg-cyan-300"
-        }`}
-        style={{
-          animationDuration: "1s",
-        }}
-      />
+    <span className={`inline-flex items-center gap-3 ${className}`}>
+      {entries.map((entry, i) => {
+        const isRtl = entry.direction === "rtl";
+        const charCount = charIndices[i] || 0;
+        const text = isRtl
+          ? entry.text.slice(entry.text.length - charCount)
+          : entry.text.slice(0, charCount);
+
+        return (
+          <span key={i} className="inline-flex items-center gap-3">
+            <span className="inline-block whitespace-nowrap">
+              <span dir={isRtl ? "rtl" : "ltr"} className="inline-block">
+                {text}
+              </span>
+            </span>
+            {i < entries.length - 1 && (
+              <span className="text-cyan-400/60">{divider}</span>
+            )}
+          </span>
+        );
+      })}
     </span>
   );
 }

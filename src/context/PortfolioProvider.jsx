@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { getProfile } from "@/services/profile.service";
+import { getProfile, updateProfileService } from "@/services/profile.service";
 import { createContext, useEffect, useState } from "react";
 
 /**
@@ -14,13 +14,13 @@ import { createContext, useEffect, useState } from "react";
 
 /** @type {import('react').Context<PortfolioContextValue|null>} */
 
-
 export const PortfolioContext = createContext(null);
 
 export const PortfolioProvider = ({ children }) => {
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -51,13 +51,34 @@ export const PortfolioProvider = ({ children }) => {
     };
   }, []);
 
+  // ============================
+  // Update Profile
+  // ============================
+  async function updateProfile(profileData) {
+    try {
+      setError(null);
+      setUpdating(true);
+
+      const updatedProfile = await updateProfileService(profileData);
+
+      // UI instantly update হবে
+      setProfileData(updatedProfile);
+
+      return updatedProfile;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setUpdating(false);
+    }
+  }
+
   const defaultValues = {
     profileData,
-    setProfileData,
     loading,
-    setLoading,
     error,
-    setError,
+    updateProfile,
+    updating,
   };
 
   return (
@@ -66,7 +87,3 @@ export const PortfolioProvider = ({ children }) => {
     </PortfolioContext.Provider>
   );
 };
-
-
-
-
