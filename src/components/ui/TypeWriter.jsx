@@ -18,6 +18,7 @@ function normalizeEntry(entry) {
  * @param {number} [props.deleteSpeed=40]
  * @param {number} [props.pauseDuration=2000]
  * @param {string} [props.divider="|"]
+ * @param {boolean} [props.textEffect=false] - Enable gradient text effect with glow
  * @param {string} [props.className]
  */
 export default function TypeWriter({
@@ -26,6 +27,7 @@ export default function TypeWriter({
   deleteSpeed = 40,
   pauseDuration = 2000,
   divider = "|",
+  textEffect = false,
   className = "",
 }) {
   const entries = words.map(normalizeEntry);
@@ -98,6 +100,15 @@ export default function TypeWriter({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Text effect styles — gradient text + glow, no glass background
+  const textClasses = textEffect
+    ? "bg-linear-to-r from-cyan-300 via-electric-purple to-fuchsia-400 bg-clip-text font-bold text-transparent drop-shadow-[0_0_12px_rgba(0,255,255,0.3)]"
+    : "";
+
+  const dividerClasses = textEffect
+    ? "bg-linear-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent"
+    : "text-cyan-400/60";
+
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
       {entries.map((entry, i) => {
@@ -110,12 +121,15 @@ export default function TypeWriter({
         return (
           <span key={i} className="inline-flex items-center gap-3">
             <span className="inline-block whitespace-nowrap">
-              <span dir={isRtl ? "rtl" : "ltr"} className="inline-block">
+              <span
+                dir={isRtl ? "rtl" : "ltr"}
+                className={`inline-block ${textClasses}`}
+              >
                 {text}
               </span>
             </span>
             {i < entries.length - 1 && (
-              <span className="text-cyan-400/60">{divider}</span>
+              <span className={dividerClasses}>{divider}</span>
             )}
           </span>
         );

@@ -76,6 +76,7 @@ export default function AboutDetails({ profileData }) {
                 typeSpeed={20}
                 deleteSpeed={20}
                 pauseDuration={2000}
+                textEffect
               />
             </h3>
             <p className="text-sm text-gray-300">
