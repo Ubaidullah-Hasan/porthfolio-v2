@@ -10,7 +10,9 @@ const professionalSummary =
   "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
 
 export default function HeroContent({ profileData }) {
-  
+  // Safely handle missing profileData or designations to avoid destructuring from undefined
+  const [designation1, designation2] = profileData?.designations ?? [];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -27,13 +29,16 @@ export default function HeroContent({ profileData }) {
       >
         Hi, I&rsquo;m{" "}
         <span className="bg-linear-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
-          { profileData?.last_name || "Name"}
+          {profileData?.last_name || "Name"}
         </span>
         <span className="mt-2 block font-light tracking-tight text-gray-200 sm:text-xl">
           <TypeWriter
             words={[
-              { text: "Software Engineer", direction: "ltr" },
-              { text: "Full Stack Developer", direction: "rtl" },
+              { text: designation1 || "Software Engineer", direction: "ltr" },
+              {
+                text: designation2 || "Full Stack Developer",
+                direction: "rtl",
+              },
             ]}
             divider="💡"
             typeSpeed={70}
