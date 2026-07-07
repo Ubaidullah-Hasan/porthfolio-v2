@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function normalizeEntry(entry) {
   if (typeof entry === "string") {
@@ -29,41 +29,38 @@ export default function TypeWriter({
   className = "",
 }) {
   const entries = words.map(normalizeEntry);
-
-  // Mutable state — no re-render dependency issues
-  const charIndicesRef = useRef(entries.map(() => 0));
-  const [renderKey, setRenderKey] = useState(0);
-  const forceRender = () => setRenderKey((k) => k + 1);
+  const [charIndices, setCharIndices] = useState(entries.map(() => 0));
 
   useEffect(() => {
     if (entries.length === 0) return;
 
     let mounted = true;
-    const timers = [];
+    let timerIds = [];
 
     function delay(ms) {
       return new Promise((resolve) => {
         const id = setTimeout(() => {
           if (mounted) resolve();
         }, ms);
-        timers.push(id);
+        timerIds.push(id);
       });
     }
 
     async function runLoop() {
       while (mounted) {
         // --- TYPE phase ---
-        charIndicesRef.current = entries.map(() => 0);
+        let indices = entries.map(() => 0);
 
         while (mounted) {
           let allDone = true;
-          entries.forEach((entry, i) => {
-            if (charIndicesRef.current[i] < entry.text.length) {
+          indices = indices.map((count, i) => {
+            if (count < entries[i].text.length) {
               allDone = false;
-              charIndicesRef.current[i]++;
+              return count + 1;
             }
+            return count;
           });
-          forceRender();
+          setCharIndices([...indices]);
           if (allDone) break;
           await delay(typeSpeed + 30);
         }
@@ -75,13 +72,14 @@ export default function TypeWriter({
         // --- DELETE phase ---
         while (mounted) {
           let allEmpty = true;
-          entries.forEach((_, i) => {
-            if (charIndicesRef.current[i] > 0) {
+          indices = indices.map((count) => {
+            if (count > 0) {
               allEmpty = false;
-              charIndicesRef.current[i]--;
+              return count - 1;
             }
+            return count;
           });
-          forceRender();
+          setCharIndices([...indices]);
           if (allEmpty) break;
           await delay(deleteSpeed);
         }
@@ -95,12 +93,10 @@ export default function TypeWriter({
 
     return () => {
       mounted = false;
-      timers.forEach(clearTimeout);
+      timerIds.forEach(clearTimeout);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const charIndices = charIndicesRef.current;
 
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
