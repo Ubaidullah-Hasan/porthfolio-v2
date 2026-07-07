@@ -91,3 +91,19 @@ CREATE TRIGGER update_profiles_updated_at
 BEFORE UPDATE ON profiles
 FOR EACH ROW
 EXECUTE FUNCTION update_updated_at_column();
+
+
+-- ============================================
+-- After Table Creation: Add Designations Column replacing Headline
+-- ============================================
+ALTER TABLE profiles
+RENAME COLUMN headline TO designations;
+
+
+-- ============================================
+-- Alter Designations Column to Array of Text
+-- ============================================
+ALTER TABLE profiles
+ALTER COLUMN designations
+TYPE TEXT[]
+USING ARRAY[designations];

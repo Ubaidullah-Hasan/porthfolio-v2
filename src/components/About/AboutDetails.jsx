@@ -1,10 +1,6 @@
 import TypeWriter from "../ui/TypeWriter";
 
-const quickFacts = [
-  { label: "Role", value: "Full Stack" },
-  { label: "Backend", value: "APIs + Auth" },
-  { label: "Database", value: "SQL / NoSQL" },
-];
+
 
 const techColors = [
   "border-cyan-500/20 bg-cyan-500/10 text-cyan-200",
@@ -41,6 +37,13 @@ const techStack = [
  */
 
 export default function AboutDetails({ profileData }) {
+
+  const quickFacts = [
+  { label: "Role", value: profileData?.role || "Full Stack" },
+  { label: "Backend", value: profileData?.backend || "APIs + Auth" },
+  { label: "Database", value: profileData?.database || "SQL / NoSQL" },
+];
+
   return (
     <div className="relative h-full overflow-hidden rounded-4xl border border-white/10 bg-white/7 p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8">
       <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
@@ -80,16 +83,15 @@ export default function AboutDetails({ profileData }) {
               />
             </h3>
             <p className="text-sm text-gray-300">
-              Software Engineer | Full Stack Developer
+              {profileData?.designations[0] || "Software Engineer"}
+              {" | "}
+              {profileData?.designations[1] || "Full Stack Developer"}
             </p>
           </div>
         </div>
 
         <p className="text-sm leading-7 text-gray-300">
-          I enjoy solving real-world problems through clean code, scalable
-          architecture, and modern engineering practices. My goal is to become a
-          highly skilled Software Engineer capable of designing and building
-          impactful products from concept to deployment.
+          {profileData?.about_description || "I enjoy solving real-world problems through clean code, scalable architecture, and modern engineering practices. My goal is to become a highly skilled Software Engineer capable of designing and building impactful products from concept to deployment."}
         </p>
 
         <div className="mt-6 grid grid-cols-3 gap-3">
