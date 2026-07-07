@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { lazy, Suspense, useContext } from "react";
-import Background from "./components/Background";
+import { lazy, Suspense } from "react";
 import CursorWaterEffect from "./components/CursorWaterEffect";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar";
-import { PortfolioContext } from "./context/PortfolioProvider";
 import LoadingSpinner from "./components/ui/LoadingSpinner";
+import usePortfolio from "./hooks/usePortfolio";
 
 // Lazy-load below-fold sections — deferred until scrolled into view
 const About = lazy(() => import("./components/About/About"));
@@ -24,7 +23,8 @@ function SectionFallback() {
  * The `motion.div` wrapper provides a global fade‑in on page load.
  */
 export default function App() {
-  const { profileData, loading } = useContext(PortfolioContext);
+  const {profileData, loading,} = usePortfolio();
+  console.log("App component profileData:", profileData); // Debugging line
 
   if (loading) return <LoadingSpinner />;
 
@@ -35,7 +35,6 @@ export default function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <Background />
       <CursorWaterEffect />
       {/* Fixed glass‑morphic navbar */}
       <Navbar />

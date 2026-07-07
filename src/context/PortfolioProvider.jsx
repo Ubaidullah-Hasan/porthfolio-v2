@@ -1,7 +1,20 @@
+/* eslint-disable react-refresh/only-export-components */
 import { getProfile } from "@/services/profile.service";
 import { createContext, useEffect, useState } from "react";
 
-// eslint-disable-next-line react-refresh/only-export-components
+/**
+ * @typedef {Object} PortfolioContextValue
+ * @property {Object|null} profileData
+ * @property {React.Dispatch<React.SetStateAction<Object|null>>} setProfileData
+ * @property {boolean} loading
+ * @property {React.Dispatch<React.SetStateAction<boolean>>} setLoading
+ * @property {Error|null} error
+ * @property {React.Dispatch<React.SetStateAction<Error|null>>} setError
+ */
+
+/** @type {import('react').Context<PortfolioContextValue|null>} */
+
+
 export const PortfolioContext = createContext(null);
 
 export const PortfolioProvider = ({ children }) => {
@@ -53,4 +66,7 @@ export const PortfolioProvider = ({ children }) => {
     </PortfolioContext.Provider>
   );
 };
+
+
+
 
