@@ -1,3 +1,5 @@
+import TypeWriter from "../ui/TypeWriter";
+
 const quickFacts = [
   { label: "Role", value: "Full Stack" },
   { label: "Backend", value: "APIs + Auth" },
@@ -32,7 +34,13 @@ const techStack = [
   "Authentication",
 ];
 
-export default function AboutDetails() {
+/** @typedef {import("../../types/profile.types").Profile} Profile */
+
+/**
+ * @param {{ profileData: Profile }} props
+ */
+
+export default function AboutDetails({ profileData }) {
   return (
     <div className="relative h-full overflow-hidden rounded-4xl border border-white/10 bg-white/7 p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-8">
       <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
@@ -42,7 +50,10 @@ export default function AboutDetails() {
         <div className="mb-6 flex items-center gap-4">
           <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-linear-to-br from-cyan-300 to-fuchsia-400 text-2xl font-black text-black shadow-lg shadow-cyan-500/20">
             <img
-              src="https://ui-avatars.com/api/?name=Hasan&background=5EEAD4&color=000&size=64&bold=true"
+              src={
+                profileData?.profile_image ||
+                "https://ui-avatars.com/api/?name=Hasan&background=5EEAD4&color=000&size=64&bold=true"
+              }
               alt="Hasan"
               className="h-full w-full rounded-2xl object-cover"
             />
@@ -51,7 +62,22 @@ export default function AboutDetails() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-200">
               About Me
             </p>
-            <h3 className="text-2xl font-bold text-white">Hasan</h3>
+            <h3 className="text-2xl font-bold text-white">
+              <TypeWriter
+                words={[
+                  {
+                    text:
+                      profileData?.first_name + " " + profileData?.last_name ||
+                      "Ubaidullah OHasan",
+                    direction: "ltr",
+                  },
+                ]}
+                divider="💡"
+                typeSpeed={20}
+                deleteSpeed={20}
+                pauseDuration={2000}
+              />
+            </h3>
             <p className="text-sm text-gray-300">
               Software Engineer | Full Stack Developer
             </p>

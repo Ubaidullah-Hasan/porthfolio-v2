@@ -3,7 +3,7 @@ import AboutDetails from "./AboutDetails";
 import AboutImage from "./AboutImage";
 import AboutParticles from "./AboutParticles";
 
-export default function About() {
+export default function About({ profileData }) {
   return (
     <section className="relative overflow-hidden bg-charcoal/90 py-20">
       <AboutParticles />
@@ -16,7 +16,7 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <AboutImage />
+          <AboutImage image={profileData?.profile_image} />
         </motion.div>
 
         <motion.div
@@ -26,7 +26,7 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="relative z-10"
         >
-          <AboutDetails />
+          <AboutDetails profileData={profileData} />
         </motion.div>
       </div>
     </section>

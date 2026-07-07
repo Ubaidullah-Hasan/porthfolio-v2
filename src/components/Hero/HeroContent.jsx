@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import cvPdf from "../../assets/ubaidullah_hasan_CV.pdf";
 import TypeWriter from "../ui/TypeWriter";
 
-const professionalSummary =
-  "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
-
 export default function HeroContent({ profileData }) {
-  // Safely handle missing profileData or designations to avoid destructuring from undefined
+  const professionalSummary =
+    profileData?.hero_description ||
+    "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
+    
   const [designation1, designation2] = profileData?.designations ?? [];
 
   return (
@@ -71,12 +71,12 @@ export default function HeroContent({ profileData }) {
         className="flex flex-col items-center justify-center gap-3 sm:flex-row"
       >
         <a
-          href={cvPdf}
+          href={profileData?.hero_primary_button_url || cvPdf}
           download="Hasan_CV.pdf"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-200 hover:shadow-cyan-500/40"
         >
           <CloudArrowDownIcon className="h-5 w-5" />
-          Download my CV
+          {profileData?.hero_primary_button_text || "Download my CV"}
         </a>
 
         <a
@@ -84,7 +84,7 @@ export default function HeroContent({ profileData }) {
           className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/6 px-6 py-4 text-sm font-bold uppercase tracking-[0.18em] text-white backdrop-blur-xl transition hover:border-cyan-300/40 hover:bg-white/10"
         >
           <CodeBracketIcon className="h-5 w-5" />
-          View My Work
+          {profileData?.hero_secondary_button_text || "View My Work"}
         </a>
       </motion.div>
     </motion.div>

@@ -45,7 +45,7 @@ export default function App() {
 
       <Suspense fallback={<SectionFallback />}>
         <section id="about">
-          <About />
+          <About profileData={profileData} />
         </section>
       </Suspense>
 
