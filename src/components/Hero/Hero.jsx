@@ -2,7 +2,8 @@ import HeroBackground from "./HeroBackground";
 import HeroContent from "./HeroContent";
 import HeroScrollButton from "./HeroScrollButton";
 
-export default function Hero() {
+export default function Hero({profileData}) {
+
   return (
     <section
       id="home"
@@ -11,7 +12,7 @@ export default function Hero() {
       <HeroBackground />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-3xl items-center justify-center px-4 py-24 sm:px-6 lg:px-8">
-        <HeroContent />
+        <HeroContent profileData={profileData} />
       </div>
 
       <HeroScrollButton targetId="about" />

@@ -4,11 +4,13 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import cvPdf from "../../assets/ubaidullah_hasan_CV.pdf";
+import TypeWriter from "../ui/TypeWriter";
 
 const professionalSummary =
   "Building high-performance backend systems and scalable architectures with modern JavaScript ecosystems.";
 
-export default function HeroContent() {
+export default function HeroContent({ profileData }) {
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -25,10 +27,16 @@ export default function HeroContent() {
       >
         Hi, I&rsquo;m{" "}
         <span className="bg-linear-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
-          Hasan
+          { profileData?.last_name || "Name"}
         </span>
-        <span className="mt-2 block text-lg font-bold tracking-tight text-gray-200 sm:text-xl">
-          Software Engineer | Full Stack Developer
+        <span className="mt-2 block font-light tracking-tight text-gray-200 sm:text-xl">
+          <TypeWriter
+            words={["Software Engineer", "Full Stack Developer"]}
+            direction="rtl"
+            typeSpeed={70}
+            deleteSpeed={40}
+            pauseDuration={2000}
+          />
         </span>
       </motion.h1>
 

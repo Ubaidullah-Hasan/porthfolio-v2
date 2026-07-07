@@ -24,7 +24,6 @@ function SectionFallback() {
  */
 export default function App() {
   const {profileData, loading,} = usePortfolio();
-  console.log("App component profileData:", profileData); // Debugging line
 
   if (loading) return <LoadingSpinner />;
 
@@ -41,7 +40,7 @@ export default function App() {
 
       {/* Page sections – each id is used for smooth scroll navigation */}
       <section id="hero">
-        <Hero />
+        <Hero profileData={profileData} />
       </section>
 
       <Suspense fallback={<SectionFallback />}>
