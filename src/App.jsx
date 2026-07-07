@@ -63,13 +63,13 @@ export default function App() {
 
       <Suspense fallback={<SectionFallback />}>
         <section id="experience">
-          <Experience />
+          <Experience profileData={profileData} />
         </section>
       </Suspense>
 
       <Suspense fallback={<SectionFallback />}>
         <section id="contact">
-          <Contact />
+          <Contact profileData={profileData} />
         </section>
       </Suspense>
 

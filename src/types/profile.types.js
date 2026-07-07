@@ -30,6 +30,7 @@
  *
  * @property {number} years_of_experience
  * @property {number} projects_completed
+ * @property {string|null} primary_focus
  *
  * @property {string|null} profile_image
  * @property {string|null} cover_image

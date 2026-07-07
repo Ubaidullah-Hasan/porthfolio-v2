@@ -1,13 +1,21 @@
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
-const stats = [
-  { label: "Years", value: "6+" },
-  { label: "Products", value: "30+" },
-  { label: "Focus", value: "Full Stack" },
+
+/** @typedef {import("../../types/profile.types").Profile} Profile */
+
+/**
+ * @param {{ profileData: Profile }} props
+ */
+
+export default function ExperienceSidebar({profileData}) {
+
+  const stats = [
+  { label: "Years", value: profileData?.years_of_experience + "+" || "6+" },
+  { label: "Products", value: profileData?.projects_completed + "+"||"30+" },
+  { label: "Focus", value: profileData?.primary_focus|| "Full Stack" },
 ];
 
-export default function ExperienceSidebar() {
   return (
     <motion.aside
       initial={{ opacity: 0, x: -24 }}

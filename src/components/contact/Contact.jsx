@@ -3,7 +3,12 @@ import { useRef, useState } from "react";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
-export default function Contact() {
+/** @typedef {import("../../types/profile.types").Profile} Profile */
+
+/**
+ * @param {{ profileData: Profile }} props
+ */
+export default function Contact({profileData}) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -157,19 +162,19 @@ export default function Contact() {
             {[
               {
                 label: "Email",
-                value: "hello@example.com",
+                value: profileData?.email ||"ubaidullhasan2023@gmail.co",
                 icon: "✉",
                 gradient: "from-cyan-400/20 to-cyan-300/5",
               },
               {
                 label: "Phone",
-                value: "+880 1XXX XXXXXX",
+                value: profileData?.phone || "+880 1XXX XXXXXX",
                 icon: "☎",
                 gradient: "from-fuchsia-400/20 to-fuchsia-300/5",
               },
               {
                 label: "Location",
-                value: "Available worldwide",
+                value: profileData?.location || "Available worldwide",
                 icon: "⌖",
                 gradient: "from-emerald-400/20 to-emerald-300/5",
               },

@@ -1,5 +1,5 @@
 import ExperienceSection from "./ExperienceSection";
 
-export default function Experience() {
-  return <ExperienceSection />;
+export default function Experience({profileData}) {
+  return <ExperienceSection profileData={profileData} />;
 }

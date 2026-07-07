@@ -4,7 +4,7 @@ import ExperienceCard from "./ExperienceCard";
 import ExperienceHeader from "./ExperienceHeader";
 import ExperienceSidebar from "./ExperienceSidebar";
 
-export default function ExperienceSection() {
+export default function ExperienceSection({profileData}) {
   return (
     <section
       id="experience"
@@ -21,7 +21,7 @@ export default function ExperienceSection() {
         <ExperienceHeader />
 
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <ExperienceSidebar />
+          <ExperienceSidebar profileData={profileData} />
 
           <div className="space-y-4">
             {experience.map((item, index) => (
